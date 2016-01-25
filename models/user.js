@@ -1,9 +1,28 @@
-var	mongoose = require( 'mongoose' )
+var	mongoose = require( 'mongoose' );
+var bcrypt   = require('bcrypt-nodejs');
 
+//creates user Schema
 var userSchema = new mongoose.Schema( {
 	firstName : String,
 	email : String,
 } )
 
-module.exports = mongoose.models( "User", userSchema )
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//exports User mongoose model
+module.exports = mongoose.models( "User", userSchema )
