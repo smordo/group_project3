@@ -9,16 +9,16 @@ var userSchema = new mongoose.Schema( {
 } )
 
 //hashes password
-User.methods.encrypt = function(password) {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+userSchema.methods.encrypt = function(password) {
+  	return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 
 //compare password with stored local/hashed password 
-User.methods.validPassword = function(password) {
+userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
 
 
 //exports User mongoose model
-module.exports = mongoose.models( "User", userSchema )
+module.exports = mongoose.model( "User", userSchema )
