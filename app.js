@@ -5,7 +5,7 @@ var express 		 = require('express'),
 	bodyParser 		 = require('body-parser'),
 	mongoose 		 = require('mongoose'),
 	userRouter  	 = require('./config/routes/userRoutes.js'),
-	restaurantRouter = require('./config/routes/restaurantRoutes.js')
+	restaurantRouter = require('./config/routes/restaurantRoutes.js'),
 	port 			 = process.env.PORT || 3000
 
 app.use(morgan('dev'))
