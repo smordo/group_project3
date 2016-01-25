@@ -5,8 +5,7 @@ var restaurantSchema = new mongoose.Schema( {
 	overall_rating : Number,
 	greasy_rating: Number,
 	tex_mex_rating: Number,
-	artisal_rating: Number
+	artisanal_rating: Number
 } )
 
 module.exports = mongoose.models( "Restaurant", restaurantSchema )
-
