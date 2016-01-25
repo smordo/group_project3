@@ -37,6 +37,6 @@ var userRoutes = require('./config/routes/userRoutes');
 var restaurantRoutes = require('./config/routes/restaurantRoutes');
 
 app.use(userRoutes);
-app.use(restaurantRoutes);
+app.use( '/restaurants', restaurantRoutes);
 
 app.listen(3000);

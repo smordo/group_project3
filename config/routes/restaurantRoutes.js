@@ -3,8 +3,10 @@ var 	express    			  = require('express'),
 		bodyParser 			  = require('body-parser'),
 		restaurantsController = require('../../controllers/restaurant.js')
 
-router.route('/:id')
-	.get(restaurantsController.show);
+router.route('/')
+	.get(restaurantsController.index);
+
+
 
 
 
