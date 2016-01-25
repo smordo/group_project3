@@ -4,13 +4,15 @@ var express 	= require('express'),
 	morgan		= require('morgan'),
 	bodyParser 	= require('body-parser'),
 	mongoose 	= require('mongoose'),
-	port 		= process.env.PORT || 3000,
-
-
+	port 		= process.env.PORT || 3000
 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.listen(port)
+app.set( 'views', path.join( __dirname, 'views' ) )
+app.engine( 'ejs', require( 'ejs' ).renderFile )
+app.set( 'view engine', 'ejs' )
+
+app.listen(port) 
 console.log('server running on port' + port)
