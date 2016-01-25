@@ -1,9 +1,9 @@
 var 	express    			  = require('express'),
 		router 	   			  = express.Router(),
 		bodyParser 			  = require('body-parser'),
-		methodOverride = require('method-override'),
-		passport = require('passport'),
-		usersController = require('../controllers/users.js')
+		methodOverride 		  = require('method-override'),
+		passport 	          = require('passport'),
+		usersController 	  = require('../controllers/users.js')
 
 function authenticatedUser(req, res, next){
 	if (req.isAuthenticated() ) return next();
@@ -18,7 +18,7 @@ router.route('/login')
 	.get(usersController.getLogin)
 	.post(usersController.postLogin)
 
-router.route('logout')
+router.route('/logout')
 	.get(usersController.getLogout)
 
 
