@@ -3,4 +3,12 @@ var express 	= require('express'),
 	app 		= express(),
 	morgan		= require('morgan'),
 	bodyParser 	= require('body-parser'),
-	mongoose 	= require('mongoose');
+	mongoose 	= require('mongoose'),
+	port 		= process.env.PORT || 3000
+
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+
+app.listen(port) 
+console.log('server running on port' + port)
