@@ -35,8 +35,10 @@ app.use(function (req, res, next) {
 
 var userRoutes = require('./config/routes/userRoutes');
 var restaurantRoutes = require('./config/routes/restaurantRoutes');
+var reviewRoutes = require('./config/routes/reviewRoutes');
 
-app.use(userRoutes);
+app.use('/users', userRoutes);
 app.use( '/restaurants', restaurantRoutes);
+app.use('/reviews', reviewRoutes);
 
 app.listen(3000);
