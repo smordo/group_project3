@@ -21,4 +21,8 @@ userSchema.methods.validPassword = function(password) {
 
 
 //exports User mongoose model
-module.exports = mongoose.model( "User", userSchema )
+var User = mongoose.model( 'User', userSchema )
+
+
+//exporting constructor function to be used in controller
+module.exports = User

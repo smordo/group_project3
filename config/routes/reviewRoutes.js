@@ -9,7 +9,7 @@ router.route('/')
 	.post(reviews_Controller.create)
 
 router.route('/:id')
-	.path(reviews_Controller.update)
+	.patch(reviews_Controller.update)
 	.delete(reviews_Controller.remove)
 
 

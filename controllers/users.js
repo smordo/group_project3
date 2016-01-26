@@ -1,4 +1,5 @@
-var passport = require("passport")
+var passport = require('passport')
+var User = require('../models/user.js')
 
 
 // GET /signup
