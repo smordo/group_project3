@@ -2,28 +2,18 @@
 <html>
   <head>
   	<title>Burrito Project</title>
-    <style type="text/css">
-      html, body { height: 100%; margin: 0; padding: 0; }
-      #map { height: 100%; }
-    </style>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+
   </head>
   <body>
-    <div id="map"></div>
-    <script type="text/javascript">
+  <% include ./login %>
+    <main class="container">
+      <%#- body %>
+    </main>
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 34.052235, lng: -118.243683},
-    zoom: 10
-  });
-}
-
-    </script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
+    <% include ./map %>
+       
   </body>
 </html>

@@ -8,4 +8,4 @@ var restaurantSchema = new mongoose.Schema( {
 	artisanal_rating: Number
 } )
 
-module.exports = mongoose.models( "Restaurant", restaurantSchema )
+module.exports = mongoose.model( "Restaurant", restaurantSchema )
