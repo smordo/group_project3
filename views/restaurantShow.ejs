@@ -1,6 +1,13 @@
-    <% for(var i=0; i< restaurants.length; i++){ %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Burrito Project</title>
+
+  </head>
+  <body>
+    <% for(var i=0; i< restaurant.length; i++){ %>
       <ul>
-        <li><b>Name : </b> <%= restaurant.name[i].name%></li>
+        <li><b>Name : </b> <%= restaurant[i].name%></li>
         <li><b>Overall Rating : </b> <%= restaurant[i].reviews.overall_rating%></li>
         <li><b>Greasy Factor : </b> <%= restaurant[i].reviews.greasy_rating%></li>
         <li><b>Tex Mex Factor: </b> <%= restaurant[i].reviews.tex_mex_rating%></li>
@@ -15,3 +22,9 @@
       <div class="container">
           <% include ./partials/reviewForm %>
       </div>
+       
+  </body>
+</html>
+
+
+
