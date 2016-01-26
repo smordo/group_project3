@@ -5,7 +5,7 @@ var restaurantSchema = new mongoose.Schema( {
 	zomato_id : Number,
 	location: [{
 				latitude: Number,
-				longitude: Number,
+				longitude: Number
 				}]
 	name: String,
 	reviews: [reviewSchema]
