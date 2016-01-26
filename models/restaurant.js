@@ -1,4 +1,4 @@
-var	mongoose = require( 'mongoose' )
+var mongoose = require( 'mongoose' )
 
 var restaurantSchema = new mongoose.Schema( {
 	_id: Number,
