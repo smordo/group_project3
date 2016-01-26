@@ -9,7 +9,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
-mongoose.connect('mongodb://localhost/local-authentication-with-passport'); 
+mongoose.connect('mongodb://localhost/burrito-app'); 
+
 
 app.use(morgan('dev')); 
 app.use(cookieParser());

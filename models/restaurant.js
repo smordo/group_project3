@@ -1,4 +1,5 @@
 var mongoose = require( 'mongoose' )
+var reviewSchema = require('./review.js')
 
 var restaurantSchema = new mongoose.Schema( {
 	_id: Number,
@@ -6,7 +7,7 @@ var restaurantSchema = new mongoose.Schema( {
 	location: [{
 			latitude: Number,
 			longitude: Number
-		}]
+		}],
 	name: String,
 	reviews: [reviewSchema]
 } )
