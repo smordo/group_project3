@@ -9,6 +9,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
+
 //routes
 var userRoutes = require('./config/routes/userRoutes');
 var restaurantRoutes = require('./config/routes/restaurantRoutes');
@@ -17,6 +18,7 @@ var reviewRoutes = require('./config/routes/reviewRoutes');
 
 //connect to mongodb via mongoose
 mongoose.connect('mongodb://localhost/burrito-app'); 
+
 
 
 //middleware for logger and parsers
