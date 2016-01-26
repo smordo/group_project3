@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+</head>
+<body>
+<h1><%= users.name %></h1>
+<h2><%= users.email %></h2>
+<a href="/users/<%= users._id %>/edit">Edit</a>
+
+
+<form method="post" action="/users/<%= users._id %>">
+	<input type="hidden" name="_method" value="delete" />
+	<button type="submit">Delete</button>
+</form>
+
+</body>

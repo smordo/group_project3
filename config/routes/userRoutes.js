@@ -3,7 +3,7 @@ var 	express    			  = require('express'),
 	bodyParser 			  = require('body-parser'),
 	methodOverride 		  = require('method-override'),
 	passport 	          		  = require('passport'),
-	usersController 	 	  = require('../../controllers/users')
+	usersController 	 	  = require('../../controllers/passport')
 
 function authenticatedUser(req, res, next){
 	if (req.isAuthenticated() ) return next();
