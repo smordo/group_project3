@@ -1,11 +1,14 @@
 var	mongoose = require( 'mongoose' )
 
 var restaurantSchema = new mongoose.Schema( {
+	_id: Number,
 	zomato_id : Number,
-	overall_rating : Number,
-	greasy_rating: Number,
-	tex_mex_rating: Number,
-	artisanal_rating: Number
+	location: [{
+				latitude: Number,
+				longitude: Number,
+				}]
+	name: String,
+	reviews: [reviewSchema]
 } )
 
 module.exports = mongoose.model( "Restaurant", restaurantSchema )
