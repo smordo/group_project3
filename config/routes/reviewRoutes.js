@@ -2,7 +2,6 @@ var 	express    			  = require('express'),
 		router 	   			  = express.Router(),
 		bodyParser 			  = require('body-parser'),
 		methodOverride 		  = require('method-override'),
-		passport 	          = require('passport'),
 		reviews_Controller 	  = require('../../controllers/review.js')
 
 
