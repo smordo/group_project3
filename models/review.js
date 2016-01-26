@@ -1,5 +1,6 @@
 var mongoose = require( 'mongoose' )
 
+//creates review Schema
 var reviewSchema = new mongoose.Schema({
         review_id: Number, 
         overall_rating : Number,
@@ -8,4 +9,8 @@ var reviewSchema = new mongoose.Schema({
       	artisanal_rating: Number
         })
 
-module.exports = mongoose.model( "Review", reviewSchema )
+//exports review mongoose model
+var Review = mongoose.model( 'Review', reviewSchema )
+
+//exports constructor function to be used in controller
+module.exports = Review
