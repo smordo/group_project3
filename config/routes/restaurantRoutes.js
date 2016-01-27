@@ -4,10 +4,10 @@ var 	express    			  = require('express'),
 
 router.route('/')
 	.get(restaurantsController.index)
+	.post(restaurantsController.create)
 
 router.route('/new')
 	.get(restaurantsController.newRestaurant)
-	.post(restaurantsController.create)
 
 router.route('/:name')
 	.get(restaurantsController.show)

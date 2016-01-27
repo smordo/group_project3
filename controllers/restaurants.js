@@ -1,5 +1,6 @@
 var Restaurant = require('../models/restaurant.js')
 
+// GET
 function index( req, res ) {
 	Restaurant.find( function( error, restaurants ) {
 		if ( error ) res.json( { message: "Could not find restaurants" } )
@@ -16,22 +17,23 @@ function newRestaurant(request, response) {
   });
 }
 
-//CREATE
+// CREATE
 function create(req, res){
 	var restaurant = new Restaurant();
 
 	restaurant.name = req.body.name;
 	restaurant.overall_rating = req.body.overall_rating;
 	restaurant.greasy_rating = req.body.greasy_rating;
-	restaurant.texMex_rating = req.body.tex_mex_rating;
+	restaurant.tex_mex_rating = req.body.tex_mex_rating;
 	restaurant.artisanal_rating = req.body.artisanal_rating;
 
 	restaurant.save(function(error) {
-		if(error) res.json( {message: 'Could not create restaurant'});
+		if(error) throw error
 		res.redirect('/restaurants')
 	});
 }
 
+// GET
 function show(req, res) {
 	var name = req.params.name;
 
