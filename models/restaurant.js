@@ -1,5 +1,4 @@
 var	mongoose = require( 'mongoose' )
-var reviewSchema = require('./review')
 
 
 //creates restaurant Schema
@@ -11,7 +10,10 @@ var restaurantSchema = new mongoose.Schema( {
 			longitude: Number
 		}],
 	name: String,
-	reviews: [reviewSchema]
+  overall_rating : Number,
+	greasy_rating: Number,
+	tex_mex_rating: Number,
+	artisanal_rating: Number
 } )
 
 
