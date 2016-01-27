@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-var 	express    			  = require('express'),
+var express    			  = require('express'),
 	router 	   			  = express.Router(),
 	restaurantsController = require('../../controllers/restaurants')
-=======
-var express    			  = require('express'),
-		router 	   			  = express.Router(),
-		restaurantsController = require('../../controllers/restaurants')
->>>>>>> 081bf0de78e024f171afdcd983cf61cd9bf964ad
 
 router.route('/')
 	.get(restaurantsController.index)

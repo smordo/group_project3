@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var path         = require('path');
+var ejsLayouts 	 = require('express-ejs-layouts');
 
 
 //routes
@@ -28,9 +29,11 @@ app.use(cookieParser());
 app.use(bodyParser());
 
 //set EJS for the views
+app.use(ejsLayouts)
 app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'))
 
 //passport and sessions
 app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));
