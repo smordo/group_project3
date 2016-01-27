@@ -14,6 +14,7 @@ var path         = require('path');
 var userRoutes = require('./config/routes/userRoutes');
 var passportRoutes = require('./config/routes/passportRoutes');
 var restaurantRoutes = require('./config/routes/restaurantRoutes');
+var apiRoutes = require('./config/routes/apiRoutes');
 
 
 //connect to mongodb via mongoose
@@ -49,6 +50,7 @@ app.use(function (req, res, next) {
 app.use('/users', userRoutes);
 app.use('/passport', passportRoutes);
 app.use( '/restaurants', restaurantRoutes);
+app.use('/api', apiRoutes);
 
 
 app.listen(3000);

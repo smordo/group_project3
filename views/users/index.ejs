@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+</head>
+<body>
+	<h1>Name<%=users[0].firstName %></h1>
+	<ul>
+	<% for(var i = 0; i < users.length; i++) { %>
+		<li><b>firstName: </b> <%=users[i].local.firstName%></li>
+		<li><b>Email: </b><%=users[i].local.email %></li>
+		
+	<% } %>
+	</ul>
+</body>
+</html>
