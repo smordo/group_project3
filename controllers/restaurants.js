@@ -11,7 +11,7 @@ function index( req, res ) {
 // GET
 function newRestaurant(request, response) {
   console.log("FORM RENDERED FOR NEW DOCUMENT");
-  response.render('./restaurants/new', {
+  response.render('../views/restaurantViews/new', {
     title: "Create New Restaurant"
   });
 }
@@ -21,19 +21,16 @@ function create(req, res){
 	var restaurant = new Restaurant();
 
 	restaurant.name = req.body.name;
-	restaurant.reviews.overall_rating = req.body.overall_rating;
-	restaurant.reviews.greasy_rating = req.body.greasy_rating;
-	restaurant.reviews.texMex_rating = req.body.tex_mex_rating;
-	restaurant.reviews.artisanal_rating = req.body.artisanal_rating;
+	restaurant.overall_rating = req.body.overall_rating;
+	restaurant.greasy_rating = req.body.greasy_rating;
+	restaurant.texMex_rating = req.body.tex_mex_rating;
+	restaurant.artisanal_rating = req.body.artisanal_rating;
 
 	restaurant.save(function(error) {
-		if(error) res.json( {message: 'Could not create review'});
+		if(error) res.json( {message: 'Could not create restaurant'});
 		res.redirect('/restaurants')
 	});
 }
-
-
-
 
 function show(req, res) {
 	var name = req.params.name;
@@ -47,19 +44,18 @@ function show(req, res) {
 	})
 }
 
-
 function update(req, res) {
 	var id = req.params.id;
-	Review.findById({_id: id}, function(error, review) {
-		if(error) res.json({message: 'Could not find review'});
+	Restaurant.findById({_id: id}, function(error, restaurant) {
+		if(error) res.json({message: 'Could not find restaurant'});
 
-		if(req.body.overall_rating) reviews.overall_rating = req.body.overall_rating;
-		if(req.body.greasy_rating) reviews.greasy_rating = req.body.greasy_rating;
-		if(req.body.tex_mex_rating) reviews.tex_mex_rating = req.body.tex_mex_rating;
-		if(req.body.artisanal_rating) reviews.artisanal_rating = req.body.artisanal_rating;
+		if(req.body.overall_rating) restaurant.overall_rating = req.body.overall_rating;
+		if(req.body.greasy_rating) restaurant.greasy_rating = req.body.greasy_rating;
+		if(req.body.tex_mex_rating) restaurant.tex_mex_rating = req.body.tex_mex_rating;
+		if(req.body.artisanal_rating) restaurant.artisanal_rating = req.body.artisanal_rating;
 
-		review.save(function(error) {
-			if(error) res.json({ message: 'Could not update review'});
+		restaurant.save(function(error) {
+			if(error) res.json({ message: 'Could not update restaurant'});
 
 			res.json({message: 'Updated review!'});
 		})
@@ -69,14 +65,12 @@ function update(req, res) {
 function remove(req, res) {
 	var id = req.params.id;
 
-	Review.remove({_id: id}, function(error) {
-		if(error) res.json({message: 'Could not delete review'});
+	Restaurant.remove({_id: id}, function(error) {
+		if(error) res.json({message: 'Could not delete restaurant'});
 
-		res.json({message: 'Review successfully deleted!'});
+		res.json({message: 'Restaurant successfully deleted!'});
 	})
 }
-
-
 
 module.exports = {
 	index: index,
