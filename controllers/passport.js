@@ -9,6 +9,7 @@ function getSignup(request, response) {
 
 // POST /signup
 function postSignup(request, response) {
+  console.log("hiiiiii")
   console.log(request.params)
 
   var signUpStrategy = passport.authenticate('local-signup', {
