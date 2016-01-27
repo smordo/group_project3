@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   </head>
   <body>
+    <div class= "container">
   <div>
       <ul>
         <li><b>Name : </b> <%= restaurant.name%></li>
@@ -14,21 +15,22 @@
         <li><b>Artisanal Factor : </b> <%= restaurant.artisanal_rating%></li>
       </ul>
   </div>
-  <div class="form-group col-md-3">
-    <input type="name", name="name" class="form-control" placeholder="Name"/>
-  </div>
-  <div class="form-group col-md-3">
-    <input name="rating" class="form-control" placeholder="Rating"/>
-  </div>
-  <div class="form-group col-md-3">
-    <input type= "submit" class="form-control" placeholder="Submit"/>
-  </div>
-
-
+  <form method="POST" action="/restaurants">
+    <div class="form-group col-md-3">
+      <input name="Name"  class="form-control" placeholder="Name"/>
+      <div class="form-group col-md-3">
+        <input name="greasy_rating"  class="form-control" placeholder="Greasy"/>
+      </div>
+      <div class="form-group col-md-3">
+        <input name="tex_mex_rating"  class="form-control" placeholder="Tex Mex"/>
+      </div>
+      <div class="form-group col-md-3">
+        <input name="artisanal_rating"  class="form-control" placeholder="Artisanal"/>
+      </div>
+        <div class="form-group col-md-3">
+          <input class="btn btn-primary col-md-12" type="submit" value="Submit">
   <hr>
-      <!-- <div class="container">
-          <%# include ../partials/reviewForm %>
-      </div> -->
 
+</div>
   </body>
 </html>
