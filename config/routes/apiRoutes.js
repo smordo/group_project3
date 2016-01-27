@@ -14,7 +14,7 @@ router.route('/new')
   //search api by restaurant name
 router.route('/:name')
 	.get(restaurantsController.show)
-	.patch(restaurantsController.update)
+	.put(restaurantsController.update)
 	.delete(restaurantsController.remove)
 
 //export router

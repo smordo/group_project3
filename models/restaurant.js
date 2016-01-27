@@ -7,7 +7,7 @@ var restaurantSchema = new mongoose.Schema( {
 	latitude: Number,
 	longitude: Number,
 	name: String,
-  	overall_rating : Number,
+  overall_rating : Number,
 	greasy_rating: Number,
 	tex_mex_rating: Number,
 	artisanal_rating: Number

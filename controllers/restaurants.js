@@ -1,6 +1,6 @@
 var Restaurant = require('../models/restaurant.js')
 
-// GET
+// GET ALL
 function index( req, res ) {
 	Restaurant.find( function( error, restaurants ) {
 		if ( error ) res.json( { message: "Could not find restaurants" } )
@@ -9,10 +9,10 @@ function index( req, res ) {
 	})
 }
 
-// GET
-function newRestaurant(request, response) {
+// GET NEW FORM
+function newRestaurant(req, res) {
   	console.log("FORM RENDERED FOR NEW DOCUMENT");
-  	response.render('../views/restaurantViews/new', {
+  	res.render('../views/restaurantViews/new', {
     title: "Create New Restaurant"
   });
 }
@@ -35,10 +35,9 @@ function create(req, res){
 	});
 }
 
-// GET
+// GET ONE
 function show(req, res) {
 	var name = req.params.name;
-
 	Restaurant.findOne( {name: name}, function(error, restaurant ) {
 		console.log(name);
 		if(error) console.log(error)
@@ -48,25 +47,39 @@ function show(req, res) {
 	})
 }
 
+//GET FORM TO EDIT
+function edit(req, res) {
+	var name = req.params.name;
+	Restaurant.findOne( {name: name}, function(error, restaurant ) {
+    res.render('../views/restaurantViews/edit', ({
+      restaurant:restaurant
+    }));
+  });
+}
+
+
+//SUBMIT PUT
 function update(req, res) {
 	var name = req.params.name;
-	Restaurant.findOneAndUpdate({name: name}, function(error, restaurant) {
+	Restaurant.findOne({name: name}, function(error, restaurant) {
 		if(error) res.json({message: 'Could not find restaurant'});
-
-		if(req.body.latitude) restaurant.latitude = req.body.latitude;
-		if(req.body.longitude) restaurant.longitude = req.body.longitude;
-		if(req.body.overall_rating) restaurant.overall_rating = req.body.overall_rating;
-		if(req.body.greasy_rating) restaurant.greasy_rating = req.body.greasy_rating;
-		if(req.body.tex_mex_rating) restaurant.tex_mex_rating = req.body.tex_mex_rating;
-		if(req.body.artisanal_rating) restaurant.artisanal_rating = req.body.artisanal_rating;
+		console.log('PUT REQUEST RECEIVED');
+    console.log(restaurant);
+	  restaurant.latitude = req.body.latitude;
+		restaurant.longitude = req.body.longitude;
+		restaurant.overall_rating = req.body.overall_rating;
+		restaurant.greasy_rating = req.body.greasy_rating;
+		restaurant.tex_mex_rating = req.body.tex_mex_rating;
+		restaurant.artisanal_rating = req.body.artisanal_rating;
 
 		restaurant.save(function(error) {
-			if(error) console.log( error )
-			res.redirect('/restaurants')
+			if(error) console.log( "could not update skateboard b/c " + error )
+			res.redirect('/restaurants/:name')
 		});
 	})
 }
 
+//DESTROY ONE
 function remove(req, res) {
 	var name = req.params.name;
 
@@ -79,8 +92,9 @@ function remove(req, res) {
 module.exports = {
 	index: index,
 	newRestaurant: newRestaurant,
-	show: show,
 	create: create,
+	edit:edit,
+	show: show,
 	update: update,
 	remove: remove
 }
