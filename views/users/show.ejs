@@ -6,10 +6,10 @@
 <body>
 <h1><%= users.name %></h1>
 <h2><%= users.email %></h2>
-<a href="/users/<%= users._id %>/edit">Edit</a>
+<a href="/users/<%= users.id %>/edit">Edit</a>
 
 
-<form method="post" action="/users/<%= users._id %>">
+<form method="post" action="/users/<%= users.id %>">
 	<input type="hidden" name="_method" value="delete" />
 	<button type="submit">Delete</button>
 </form>

@@ -12,6 +12,7 @@ var session      = require('express-session');
 
 //routes
 var userRoutes = require('./config/routes/userRoutes');
+var passportRoutes = require('./config/routes/passportRoutes');
 var restaurantRoutes = require('./config/routes/restaurantRoutes');
 var reviewRoutes = require('./config/routes/reviewRoutes');
 
@@ -48,6 +49,7 @@ app.use(function (req, res, next) {
 
 
 app.use('/users', userRoutes);
+app.use('/passport', passportRoutes);
 app.use( '/restaurants', restaurantRoutes);
 app.use('/reviews', reviewRoutes);
 
