@@ -1,6 +1,6 @@
-var express    			  = require('express'),
-		router 	   			  = express.Router(),
-		restaurantsController = require('../../controllers/restaurants')
+var express = require('express'),
+    router = express.Router(),
+    restaurantsController = require('../../controllers/api');
 
 router.route('/')
 	.get(restaurantsController.index)
