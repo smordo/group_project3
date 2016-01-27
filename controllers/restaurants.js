@@ -23,6 +23,8 @@ function create(req, res){
 
 	restaurant.name = req.body.name;
 	restaurant.overall_rating = req.body.overall_rating;
+	restaurant.latitude = req.body.latitude;
+	restaurant.longitude = req.body.longitude;
 	restaurant.greasy_rating = req.body.greasy_rating;
 	restaurant.tex_mex_rating = req.body.tex_mex_rating;
 	restaurant.artisanal_rating = req.body.artisanal_rating;
