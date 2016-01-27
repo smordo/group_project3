@@ -5,9 +5,13 @@ var 	express    			  = require('express'),
 	passport 	          		  = require('passport'),
 	usersController 	 	  = require('../../controllers/users')
 
-router.route('/:id')
+router.route('/')
+	.get(usersController.getIndex);
+
+router.route('/:firstName')
 	.get(usersController.getUser)
 	.patch(usersController.editUser)
+	.delete(usersController.destroyUser);
 
 
 

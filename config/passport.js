@@ -13,11 +13,12 @@ module.exports = function(passport) {
     });
   });
 
-  passport.use('local-signup', new LocalStrategy({
+  passport.use('local-signup', new LocalStrategy( {
+    usernameField: 'firstName',
     usernameField : 'email',
     passwordField : 'password',
     passReqToCallback : true
-  }, function(req, email, password, callback) {
+  }, function(req, firstName, email, password, callback) {
     process.nextTick(function() {
 
       // Find a user with this e-mail
@@ -32,6 +33,7 @@ module.exports = function(passport) {
 
           // Create a new user
           var newUser            = new User();
+          newUser.local.firstName = firstName;
           newUser.local.email    = email;
           newUser.local.password = newUser.encrypt(password);
 
