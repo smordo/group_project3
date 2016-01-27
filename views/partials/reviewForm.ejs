@@ -1,0 +1,42 @@
+<h3>Rate Burrito</h3>
+<fieldset>
+ <form method="POST" action="/overall_rating">
+   <div class="form-group col-md-4">
+     <input name="overall_rating" class="form-control" placeholder="Overall Rating"/>
+      <label class="radio-inline"><input type="radio" name="optradio">1</label>
+      <label class="radio-inline"><input type="radio" name="optradio">2</label>
+      <label class="radio-inline"><input type="radio" name="optradio">3</label>
+      <label class="radio-inline"><input type="radio" name="optradio">4</label>
+      <label class="radio-inline"><input type="radio" name="optradio">5</label>
+   </div>
+   <h1>Star Rating</h1>
+<form>
+  <fieldset>
+    <span class="star-cb-group">
+      <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
+      <input type="radio" id="rating-4" name="rating" value="4" checked="checked" /><label for="rating-4">4</label>
+      <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
+      <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
+      <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
+      <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+    </span>
+  </fieldset>
+</form>
+
+   <div class="form-group col-md-4">
+     <input name="greasy_rating"  class="form-control" placeholder="Greasy"/>
+   </div>
+   <div class="form-group col-md-4">
+     <input name="tex_mex_rating"  class="form-control" placeholder="Tex Mex"/>
+   </div>
+   <div class="form-group col-md-4">
+     <input name="artisanal_rating"  class="form-control" placeholder="Artisanal"/>
+   </div>
+     <div class="form-group col-md-4">
+       <input class="btn btn-primary col-md-12" type="submit" value="Submit">
+     </div>
+     <div class="form-group col-md-4">
+       <input class="btn btn-primary col-md-12" type="delete" value="Delete">
+     </div>
+ </form>
+</fieldset>

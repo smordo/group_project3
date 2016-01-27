@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit User</title>
+</head>
+<body>
+	<form method="post" action="/users/<%= users._id %>">
+		<input type="hidden" name="_method" value="put">
+		<input type="text" name="name" value="<%= users.name %>">
+		<input type="text" name="color" value="<%= users.email %>">
+		<button type="submit">Update User!</button>
+	</form>
+</body>
+</html>

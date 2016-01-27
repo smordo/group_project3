@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Burrito Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+  <body>
+  <div>
+      <ul>
+        <li><b>Name : </b> <%= restaurant.name%></li>
+        <li><b>Overall Rating : </b> <%= restaurant.overall_rating%></li>
+        <li><b>Greasy Factor : </b> <%= restaurant.greasy_rating%></li>
+        <li><b>Tex Mex Factor: </b> <%= restaurant.tex_mex_rating%></li>
+        <li><b>Artisanal Factor : </b> <%= restaurant.artisanal_rating%></li>
+      </ul>
+  </div>
+  <div class="form-group col-md-3">
+    <input type="name", name="name" class="form-control" placeholder="Name"/>
+  </div>
+  <div class="form-group col-md-3">
+    <input name="rating" class="form-control" placeholder="Rating"/>
+  </div>
+  <div class="form-group col-md-3">
+    <input type= "submit" class="form-control" placeholder="Submit"/>
+  </div>
+
+
+  <hr>
+      <!-- <div class="container">
+          <%# include ../partials/reviewForm %>
+      </div> -->
+
+  </body>
+</html>

@@ -3,26 +3,38 @@ var app          = express();
 var mongoose     = require('mongoose');
 var passport     = require('passport');
 var flash        = require('connect-flash');
-var ejsLayouts   = require("express-ejs-layouts");
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+var path         = require('path')
 
-mongoose.connect('mongodb://localhost/local-authentication-with-passport'); 
 
-app.use(morgan('dev')); 
+//routes
+var userRoutes = require('./config/routes/userRoutes');
+var passportRoutes = require('./config/routes/passportRoutes');
+var restaurantRoutes = require('./config/routes/restaurantRoutes');
+
+
+//connect to mongodb via mongoose
+mongoose.connect('mongodb://localhost/burrito-app');
+
+
+
+//middleware for logger and parsers
+app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(bodyParser()); 
+app.use(bodyParser());
 
+//set EJS for the views
+app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
-app.use(ejsLayouts);
-app.set("views","./views");
-app.use(express.static(__dirname + '/public'));
 
-app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' })); 
+//passport and sessions
+app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
 app.use(flash());
 
 require('./config/passport')(passport);
@@ -33,10 +45,10 @@ app.use(function (req, res, next) {
   next()
 });
 
-var userRoutes = require('./config/routes/userRoutes');
-var restaurantRoutes = require('./config/routes/restaurantRoutes');
 
-app.use(userRoutes);
+app.use('/users', userRoutes);
+app.use('/passport', passportRoutes);
 app.use( '/restaurants', restaurantRoutes);
+
 
 app.listen(3000);

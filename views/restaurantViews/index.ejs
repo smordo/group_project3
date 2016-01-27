@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+              <% for(var i=0; i< restaurants.length; i++) { %>
+        <ul>
+
+          <li><b>Name : </b> <%= restaurants[i].name%></li>
+          <li><b>Overall Rating : </b> <%= restaurants[i].overall_rating%></li>
+          <li><b>Greasy Factor : </b> <%= restaurants[i].greasy_rating%></li>
+          <li><b>Tex Mex Factor: </b> <%= restaurants[i].tex_mex_rating%></li>
+          <li><b>Artisanal Factor : </b> <%= restaurants[i].artisanal_rating%></li>
+
+        </ul>
+        <% } %>
+    </div>
+
+  </body>
+</html>
