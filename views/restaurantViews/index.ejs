@@ -1,52 +1,35 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=.5">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-        <style type="text/css">
-     html, body { height: 100%; width: 100%; margin: 0; padding: 0; }
-     #map { height: 50%; width: 90%}
-</style>
-
-  </head>
-  <body>
-    <div class= "list-group">
+<div class= "list-group">
           <% for(var i=0; i< restaurants.length; i++) { %>
 
       <ul class="list-group">
-        <li class="list-group-item"><%= restaurants[i].name%></span> Name/li>
-        <li class="list-group-item"><span class="badge"><%= restaurants[i].overall_rating%> </span> Overall Rating</li>
-        <li class="list-group-item"><span class="badge"><%= restaurants[i].greasy_rating%> </span> Greasy Rating</li>
-        <li class="list-group-item"><span class="badge"><%= restaurants[i].tex_mex_rating%> </span> Tex-Mex Rating</li>
-        <li class="list-group-item"><span class="badge"><%= restaurants[i].artisanal_rating%> </span> Artisanal Rating</li>
+        <li class="list-group-item">Name : <strong><%= restaurants[i].name%></strong></li>
+        <li class="list-group-item">Overall Rating : <span class="badge"><%= restaurants[i].overall_rating%> </span> </li>
+        <li class="list-group-item">Latitude : <span class="badge"><%= restaurants[i].latitude%> </span> </li>
+        <li class="list-group-item">Longitude : <span class="badge"><%= restaurants[i].longitude%> </span> </li>
+        <li class="list-group-item">Greasy Rating : <span class="badge"><%= restaurants[i].greasy_rating%> </span> </li>
+        <li class="list-group-item">Tex-Mex Rating : <span class="badge"><%= restaurants[i].tex_mex_rating%> </span> </li>
+        <li class="list-group-item">Artisanal Rating : <span class="badge"><%= restaurants[i].artisanal_rating%> </span> </li>
 
       </ul>
 
         <% } %>
-    </div>
+</div>
 
+<div id="map"></div>
+  <script type="text/javascript">
 
+     var map;
+     function initMap() {
+       map = new google.maps.Map(document.getElementById('map'), {
+         center: {lat: 34.019454, lng: -118.491191},
+         zoom: 13,
+         scrollwheel: false,
+         mapTypeControl: false,
+       });
+     }
 
+  </script>
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUA-xyeOQqnJNYI85RMzkX_ziKUOydfIw&callback=initMap">
+  </script>
 
-    <div id="map"></div>
-     <script type="text/javascript">
-
-       var map;
-       function initMap() {
-         map = new google.maps.Map(document.getElementById('map'), {
-           center: {lat: -34.397, lng: 150.644},
-           zoom: 8
-         });
-       }
-
-     </script>
-     <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUA-xyeOQqnJNYI85RMzkX_ziKUOydfIw&callback=initMap">
-     </script>
-
-
-  </body>
-</html>

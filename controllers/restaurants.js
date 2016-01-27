@@ -11,8 +11,8 @@ function index( req, res ) {
 
 // GET
 function newRestaurant(request, response) {
-  console.log("FORM RENDERED FOR NEW DOCUMENT");
-  response.render('../views/restaurantViews/new', {
+  	console.log("FORM RENDERED FOR NEW DOCUMENT");
+  	response.render('../views/restaurantViews/new', {
     title: "Create New Restaurant"
   });
 }
@@ -23,6 +23,8 @@ function create(req, res){
 
 	restaurant.name = req.body.name;
 	restaurant.overall_rating = req.body.overall_rating;
+	restaurant.latitude = req.body.latitude;
+	restaurant.longitude = req.body.longitude;
 	restaurant.greasy_rating = req.body.greasy_rating;
 	restaurant.tex_mex_rating = req.body.tex_mex_rating;
 	restaurant.artisanal_rating = req.body.artisanal_rating;
@@ -47,29 +49,29 @@ function show(req, res) {
 }
 
 function update(req, res) {
-	var id = req.params.id;
-	Restaurant.findById({_id: id}, function(error, restaurant) {
+	var name = req.params.name;
+	Restaurant.findOneAndUpdate({name: name}, function(error, restaurant) {
 		if(error) res.json({message: 'Could not find restaurant'});
 
+		if(req.body.latitude) restaurant.latitude = req.body.latitude;
+		if(req.body.longitude) restaurant.longitude = req.body.longitude;
 		if(req.body.overall_rating) restaurant.overall_rating = req.body.overall_rating;
 		if(req.body.greasy_rating) restaurant.greasy_rating = req.body.greasy_rating;
 		if(req.body.tex_mex_rating) restaurant.tex_mex_rating = req.body.tex_mex_rating;
 		if(req.body.artisanal_rating) restaurant.artisanal_rating = req.body.artisanal_rating;
 
 		restaurant.save(function(error) {
-			if(error) res.json({ message: 'Could not update restaurant'});
-
-			res.json({message: 'Updated review!'});
-		})
+			if(error) console.log( error )
+			res.redirect('/restaurants')
+		});
 	})
 }
 
 function remove(req, res) {
-	var id = req.params.id;
+	var name = req.params.name;
 
-	Restaurant.remove({_id: id}, function(error) {
+	Restaurant.remove({name: name}, function(error) {
 		if(error) res.json({message: 'Could not delete restaurant'});
-
 		res.json({message: 'Restaurant successfully deleted!'});
 	})
 }
