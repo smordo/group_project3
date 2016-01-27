@@ -26,6 +26,18 @@
          scrollwheel: false,
          mapTypeControl: false,
        });
+     
+     var latitude = <%= restaurants[5].latitude %>
+     var longitude = <%= restaurants[5].longitude %>
+     console.log( latitude, longitude)
+     var location = new google.maps.LatLng(latitude,longitude);
+     var marker = new google.maps.Marker({
+        position: location,
+        visible: true,
+      });
+
+     marker.setMap(map)
+
      }
 
   </script>
