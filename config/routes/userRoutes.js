@@ -12,11 +12,13 @@ router.route('/')
 
 
 router.route('/:id')
-	.get(usersController.getUser)
+	.get(usersController.getUser);
 
-router.delete('/:id', usersController.destroyUser)
+router.delete('/:id', usersController.destroyUser);
 
 router.get('/:id/edit', usersController.editUser);
+
+router.put('/:id', usersController.updateUser);
 
 
 

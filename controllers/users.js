@@ -41,24 +41,25 @@ function editUser(request, response) {
 
 
 //PATCH update
-function update(req, res) {
-	var id = req.params.id;
-	User.findById(id, function(error, users) {
-		if (error) {
-			res.send("could not find users");
-		}
-	console.log('Put request recieved');
-	console.log(users);
-	users.firstName = req.body.firstName;
-	users.email = req.body.email;
-	users.password = req.body.password;
-	users.save(function(error) {
-		if (error) {
-			res.sed('Could not find user');
-		}
-		res.redirect('/users');
-	});
-	});
+function updateUser(request, response) {
+	  var id = request.params.id;
+
+
+	  User.findById(id, function(error, users) {
+	    if (error) {
+	      response.send('Could not find user b/c:' + error);
+	    }
+	    console.log('PUT REQUEST RECEIVED');
+	    console.log(users);
+	    users.local.email = request.body.email;
+	    users.local.password = request.body.password;
+	    users.save(function(error) {
+	      if (error) {
+	        response.send('Could not update user b/c:' + error);
+	      }
+	      response.redirect('/users');
+	    });
+	  });
 }
 
 //DELETE destroy
@@ -80,5 +81,6 @@ module.exports = {
 	getIndex: getIndex,
 	getUser: getUser,
 	editUser: editUser,
-	destroyUser: destroyUser
+	destroyUser: destroyUser,
+	updateUser: updateUser
 }
