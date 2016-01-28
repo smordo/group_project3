@@ -13,8 +13,10 @@ router.route('/')
 
 router.route('/:id')
 	.get(usersController.getUser)
-	.patch(usersController.editUser)
 	.delete(usersController.destroyUser);
+
+router.get('/:id/edit', usersController.editUser);
+
 
 
 module.exports = router

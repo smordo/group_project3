@@ -29,14 +29,15 @@ function getUser(req, res) {
 };
 
 //GET edit
-function editUser(req, res) {
-	var id = req.params.id;
-	User.findById(id, function(err, users) {
-		res.render('../views/users/edit', {
-			users: users
-		});
-	});
+function editUser(request, response) {
+  var id = request.params.id;
+  User.findById(id, function(err, users) {
+    response.render('../views/users/edit', {
+      users: users
+    });
+  });
 }
+
 
 
 //PATCH update
