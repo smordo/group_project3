@@ -13,7 +13,8 @@ router.route('/')
 
 router.route('/:id')
 	.get(usersController.getUser)
-	.delete(usersController.destroyUser);
+
+router.delete('/:id', usersController.destroyUser)
 
 router.get('/:id/edit', usersController.editUser);
 

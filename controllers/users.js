@@ -62,12 +62,17 @@ function update(req, res) {
 }
 
 //DELETE destroy
-function destroyUser(req, res) {
-	var id = req.params.id;
-	console.log('Delete request made');
-	User.remove( {_id: id}, function (error) {
-		if (error) res.send("could not delete user");
-	} )
+function destroyUser(request, response) {
+  var id = request.params.id;
+  console.log('DELETE REQUEST RECEIVED');
+  User.remove({
+    _id: id
+  }, function(error) {
+    if (error) {
+      response.send('Could not delete user due to: ' + error);
+    }
+    response.redirect('/users');
+  });
 }
 
 
