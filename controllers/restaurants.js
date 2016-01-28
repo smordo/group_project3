@@ -87,7 +87,8 @@ function remove(req, res) {
 
 	Restaurant.remove({name: name}, function(error) {
 		if(error) res.json({message: 'Could not delete restaurant'});
-		res.json({message: 'Restaurant successfully deleted!'});
+		// res.redirect('/restaurants');
+		console.log("restaurant removed")
 	})
 }
 
