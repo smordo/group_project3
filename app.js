@@ -59,7 +59,9 @@ app.use(function (req, res, next) {
   next()
 });
 
-
+app.get( '/', function(req, res){
+	res.redirect('/restaurants')
+});
 app.use('/users', userRoutes);
 app.use('/passport', passportRoutes);
 app.use( '/restaurants', restaurantRoutes);
@@ -67,5 +69,4 @@ app.use('/api', apiRoutes);
 app.use('/zomato', zomato);
 
 
-app.listen(3000);
 app.listen(process.env.PORT || 3000 )
