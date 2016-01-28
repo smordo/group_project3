@@ -1,11 +1,16 @@
-var Restaurant = require('../models/restaurant.js')
-
+var Restaurant = require('../models/restaurant.js'),
+	zomato = require('../config/zomato.js')
+	
 // GET
 function index( req, res ) {
 	Restaurant.find( function( error, restaurants ) {
 		if ( error ) res.json( { message: "Could not find restaurants" } )
 		console.log(restaurants)
-		res.render( '../views/restaurantViews/index', ( {restaurants: restaurants}));
+		zomato.getRestaurants(function(error, response, body){
+			if(error) return console.log(error)
+			var zomatoResults = JSON.parse(body)
+			res.render( 'restaurantViews/index', {restaurants: restaurants, results: zomatoResults});
+		})
 	})
 }
 
