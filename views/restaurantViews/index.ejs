@@ -1,5 +1,5 @@
 <div class= "list-group">
-          <% for(var i=0; i< restaurants.length; i++) { %>
+    <% for(var i=0; i< restaurants.length; i++) { %>
 
       <ul class="list-group">
         <li class="list-group-item">Name : <strong><%= restaurants[i].name%></strong></li>
@@ -12,14 +12,15 @@
 
       </ul>
 
-        <% } %>
+    <% } %>
 </div>
 
 <div id="map"></div>
   <script type="text/javascript">
 
-     var map;
-     function initMap() {
+      var map;
+      var infowindow = null;
+      function initMap() {
        map = new google.maps.Map(document.getElementById('map'), {
          center: {lat: 34.019454, lng: -118.491191},
          zoom: 13,
@@ -27,17 +28,33 @@
          mapTypeControl: false,
        });
      
-     var latitude = <%= restaurants[5].latitude %>
-     var longitude = <%= restaurants[5].longitude %>
-     console.log( latitude, longitude)
-     var location = new google.maps.LatLng(latitude,longitude);
-     var marker = new google.maps.Marker({
-        position: location,
-        visible: true,
-      });
+      <% for(var i=0; i< restaurants.length; i++) { %>
 
-     marker.setMap(map)
+       var latitude = <%= restaurants[i].latitude %>
+       var longitude = <%= restaurants[i].longitude %>
+       
+       console.log( latitude, longitude)
 
+       var location = new google.maps.LatLng(latitude,longitude);
+       var marker = new google.maps.Marker({
+          position: location,
+          visible: true,
+        });
+
+       var content = "<h1><%= restaurants[i].name %></h1>"
+
+       var infowindow = new google.maps.InfoWindow()
+
+        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+        return function() {
+           infowindow.setContent(content);
+           infowindow.open(map,marker);
+        };
+        })(marker,content,infowindow)); 
+
+       marker.setMap(map)
+
+      <% }  %>
      }
 
   </script>
