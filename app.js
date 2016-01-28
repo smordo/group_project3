@@ -9,6 +9,7 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var path         = require('path');
 var ejsLayouts 	 = require('express-ejs-layouts');
+var methodOverride = require('method-override');
 
 //routes
 var userRoutes = require('./config/routes/userRoutes');
@@ -31,6 +32,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'))
+
+//method override
+app.use(methodOverride('_method'));
+app.use(methodOverride(function(req, res){
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 //passport and sessions
 app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));

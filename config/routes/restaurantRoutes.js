@@ -3,15 +3,27 @@ var express    			  = require('express'),
 	restaurantsController = require('../../controllers/restaurants')
 
 router.route('/')
+//GET ALL
 	.get(restaurantsController.index)
+//CREATE AFTER FORM SUBMISSION
 	.post(restaurantsController.create)
 
 router.route('/new')
+// GET NEW FORM
 	.get(restaurantsController.newRestaurant)
 
 router.route('/:name')
+//GET ONE RESTAURANT
 	.get(restaurantsController.show)
-	.patch(restaurantsController.update)
+//SUBMIT EDIT FORM
+	.put(restaurantsController.update)
+//REMOVE ONE RESTAURANT
 	.delete(restaurantsController.remove)
+
+
+router.route('/:name/edit')
+//GET EDIT FORM
+	.get(restaurantsController.edit)
+
 
 module.exports = router
