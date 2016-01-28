@@ -27,10 +27,10 @@
          mapTypeControl: false,
        });
      
-      <% for(var i=0; i< restaurants.length; i++) { %>
+      <% for(var i=0; i< results.restaurants.length; i++) { %>
 
-       var latitude = <%= restaurants[i].latitude %>
-       var longitude = <%= restaurants[i].longitude %>
+       var latitude = <%= results.restaurants[i].restaurant.location.latitude %>
+       var longitude = <%= results.restaurants[i].restaurant.location.longitude %>
        
        console.log( latitude, longitude)
 
@@ -40,20 +40,21 @@
           visible: true,
         });
 
-       var content = "<h1><%= restaurants[i].name %></h1>"
+       // var content = "<%= restaurants.name%>"
 
-       var infowindow = new google.maps.InfoWindow()
+       // var infowindow = new google.maps.InfoWindow()
 
-        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
-        return function() {
-           infowindow.setContent(content);
-           infowindow.open(map,marker);
-        };
-        })(marker,content,infowindow)); 
+       //  google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+       //  return function() {
+       //     infowindow.setContent(content);
+       //     infowindow.open(map,marker);
+       //  };
+       //  })(marker,content,infowindow)); 
 
        marker.setMap(map)
 
       <% }  %>
+
      }
 
   </script>

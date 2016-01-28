@@ -11,18 +11,15 @@ var path         = require('path');
 var ejsLayouts 	 = require('express-ejs-layouts');
 var methodOverride = require('method-override');
 
-
 //routes
 var userRoutes = require('./config/routes/userRoutes');
-var passportRoutes = require('./config/routes/passportRoutes');
+var passportRoutes 	= require('./config/routes/passportRoutes');
 var restaurantRoutes = require('./config/routes/restaurantRoutes');
 var apiRoutes = require('./config/routes/apiRoutes');
-
+var zomato = require('./config/routes/zomato')
 
 //connect to mongodb via mongoose
 mongoose.connect('mongodb://localhost/burrito-app');
-
-
 
 //middleware for logger and parsers
 app.use(morgan('dev'));
@@ -66,6 +63,7 @@ app.use('/users', userRoutes);
 app.use('/passport', passportRoutes);
 app.use( '/restaurants', restaurantRoutes);
 app.use('/api', apiRoutes);
+app.use('/zomato', zomato);
 
 
 app.listen(3000);
