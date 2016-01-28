@@ -65,6 +65,7 @@ function update(req, res) {
 		if(error) res.json({message: 'Could not find restaurant'});
 		console.log('PUT REQUEST RECEIVED');
     console.log(restaurant);
+		restaurant.name = req.body.name;
 	  restaurant.latitude = req.body.latitude;
 		restaurant.longitude = req.body.longitude;
 		restaurant.overall_rating = req.body.overall_rating;
@@ -72,9 +73,10 @@ function update(req, res) {
 		restaurant.tex_mex_rating = req.body.tex_mex_rating;
 		restaurant.artisanal_rating = req.body.artisanal_rating;
 
-		restaurant.save(function(error) {
+		restaurant.save
+					(function(error) {
 			if(error) console.log( "could not update skateboard b/c " + error )
-			res.redirect('/restaurants/:name')
+			res.redirect('/restaurants')
 		});
 	})
 }
