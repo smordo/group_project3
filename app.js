@@ -18,11 +18,9 @@ var restaurantRoutes = require('./config/routes/restaurantRoutes');
 var apiRoutes = require('./config/routes/apiRoutes');
 var zomato = require('./config/routes/zomato')
 
-var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/burrito-app';
-moongoose.connect(mongoUri);
-
 //connect to mongodb via mongoose
-mongoose.connect('mongodb://localhost/burrito-app');
+var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/burrito-app';
+mongoose.connect(mongoUri);
 
 //middleware for logger and parsers
 app.use(morgan('dev'));
