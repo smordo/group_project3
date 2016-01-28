@@ -1,6 +1,4 @@
-var passport = require('passport')
-var User = require('../models/user.js')
-
+var passport = require("passport")
 
 // GET /signup
 function getSignup(request, response) {
@@ -9,29 +7,28 @@ function getSignup(request, response) {
 
 // POST /signup
 function postSignup(request, response) {
-  console.log("hiiiiii")
   console.log(request.params)
 
   var signUpStrategy = passport.authenticate('local-signup', {
-    successRedirect : '/',
-    failureRedirect : '/signup',
-    failureFlash : true
+    successRedirect : '/users', 
+    failureRedirect : '/passport/signup', 
+    failureFlash : true 
   });
 
-  return signUpStrategy(request, response)
+  return signUpStrategy(request, response) 
 }
 
 // GET /login
-function getLogin(request, response) {
-  response.render('login.ejs', { message: request.flash('loginMessage') });
+function getLogin(request, response) { 
+  response.render('login.ejs', { message: request.flash('loginMessage') }); 
 }
 
-// POST /login
+// POST /login 
 function postLogin(request, response) {
   var loginProperty = passport.authenticate('local-login', {
-    successRedirect : '/',
-    failureRedirect : '/login',
-    failureFlash : true
+    successRedirect : '/', 
+    failureRedirect : '/login', 
+    failureFlash : true 
   });
 
   return loginProperty(request, response);
@@ -44,6 +41,7 @@ function getLogout(request, response) {
 }
 
 
+
 module.exports = {
   getLogin: getLogin,
   postLogin: postLogin ,
@@ -51,4 +49,3 @@ module.exports = {
   postSignup: postSignup,
   getLogout: getLogout
 }
-

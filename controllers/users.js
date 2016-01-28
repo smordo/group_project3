@@ -14,22 +14,30 @@ function getIndex(req, res) {
 function getUser(req, res) {
 	var id = req.params.id;
 
-	User.findById( {_id:id}, function( error, users) {
-		if(error) console.log(error)
-		res.render('../views/users/show.ejs', {users: users} )
-		} )
-		
+	 User.findById(id, function(error, users) {
+   		 if (error) {
+	      res.send('Could not find user b/c: ' + error);
+	    }
+	    console.log("GET REQUEST FOR ONE DOCUMENT");
+	    console.log(users);
+	    res.render('../views/users/show', {
+	      users: users
+	    });
+	  });
+
+	
 };
 
 //GET edit
-function editUser(req, res) {
-	var id = req.params.id;
-	User.findById(id, function(err, users) {
-		res.render('../views/users/edit', {
-			users: users
-		});
-	});
+function editUser(request, response) {
+  var id = request.params.id;
+  User.findById(id, function(err, users) {
+    response.render('../views/users/edit', {
+      users: users
+    });
+  });
 }
+
 
 
 //PATCH update
@@ -54,12 +62,17 @@ function update(req, res) {
 }
 
 //DELETE destroy
-function destroyUser(req, res) {
-	var id = req.params.id;
-	console.log('Delete request made');
-	User.remove( {_id: id}, function (error) {
-		if (error) res.send("could not delete user");
-	} )
+function destroyUser(request, response) {
+  var id = request.params.id;
+  console.log('DELETE REQUEST RECEIVED');
+  User.remove({
+    _id: id
+  }, function(error) {
+    if (error) {
+      response.send('Could not delete user due to: ' + error);
+    }
+    response.redirect('/users');
+  });
 }
 
 
