@@ -14,11 +14,18 @@ function getIndex(req, res) {
 function getUser(req, res) {
 	var id = req.params.id;
 
-	User.findById( {_id:id}, function( error, users) {
-		if(error) console.log(error)
-		res.render('../views/users/show.ejs', {users: users} )
-		} )
-		
+	 User.findById(id, function(error, users) {
+   		 if (error) {
+	      res.send('Could not find user b/c: ' + error);
+	    }
+	    console.log("GET REQUEST FOR ONE DOCUMENT");
+	    console.log(users);
+	    res.render('../views/users/show', {
+	      users: users
+	    });
+	  });
+
+	
 };
 
 //GET edit
