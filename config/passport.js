@@ -13,19 +13,18 @@ module.exports = function(passport) {
     });
   });
 
-  passport.use('local-signup', new LocalStrategy( {
-    usernameField: 'firstName',
+  passport.use('local-signup', new LocalStrategy({
     usernameField : 'email',
     passwordField : 'password',
     passReqToCallback : true
-  }, function(req, firstName, email, password, callback) {
+  }, function(req, email, password, callback) {
     process.nextTick(function() {
 
       // Find a user with this e-mail
       User.findOne({ 'local.email' :  email }, function(err, user) {
         if (err) return callback(err);
 
-        // If there already is a user with this email
+        // If there already is a user with this email 
         if (user) {
           return callback(null, false, req.flash('signupMessage', 'This email is already used.'));
         } else {
@@ -33,7 +32,6 @@ module.exports = function(passport) {
 
           // Create a new user
           var newUser            = new User();
-          newUser.local.firstName = firstName;
           newUser.local.email    = email;
           newUser.local.password = newUser.encrypt(password);
 
@@ -54,7 +52,7 @@ module.exports = function(passport) {
     // Search for a user with this email
     User.findOne({ 'local.email' :  email }, function(err, user) {
       if (err) return callback(err);
-
+     
      // If no user is found
       if (!user) return callback(null, false, req.flash('loginMessage', 'No user found.'));
 

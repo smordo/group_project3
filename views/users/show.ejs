@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><%= title %></title>
+
 </head>
 <body>
-<h1><%= users.firstName %></h1>
-<h2><%= users.email %></h2>
-<h3><%= users.password %></h3>
+	<h1><%= users.local.email %></h1>
+	
 <a href="/users/<%= users._id %>/edit">Edit</a>
 
 

@@ -6,10 +6,9 @@
 <body>
 	<form method="post" action="/users/<%= users._id %>">
 		<input type="hidden" name="_method" value="put">
-		<input type="text" name="firstName" value="<%= users.firstName %>">
-		<input type="text" name="email" value="<%= users.email %>"
-		<input type="text" name ="password" value="<%= users.password %>"
-		<button type="submit">Update User!</button>
+		<input type="text" name="email" value="<%= users.email %>">
+		
+		<button type="submit">Update Yoself!</button>
 	</form>
 </body>
 </html>

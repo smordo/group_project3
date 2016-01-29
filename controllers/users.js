@@ -14,52 +14,66 @@ function getIndex(req, res) {
 function getUser(req, res) {
 	var id = req.params.id;
 
-	User.findById( {_id:id}, function( error, users) {
-		if(error) console.log(error)
-		res.render('../views/users/show.ejs', {users: users} )
-		} )
-		
+	 User.findById(id, function(error, users) {
+   		 if (error) {
+	      res.send('Could not find user b/c: ' + error);
+	    }
+	    console.log("GET REQUEST FOR ONE DOCUMENT");
+	    console.log(users);
+	    res.render('../views/users/show', {
+	      users: users
+	    });
+	  });
+
+	
 };
 
 //GET edit
-function editUser(req, res) {
-	var id = req.params.id;
-	User.findById(id, function(err, users) {
-		res.render('../views/users/edit', {
-			users: users
-		});
-	});
+function editUser(request, response) {
+  var id = request.params.id;
+  User.findById(id, function(err, users) {
+    response.render('../views/users/edit', {
+      users: users
+    });
+  });
 }
+
 
 
 //PATCH update
-function update(req, res) {
-	var id = req.params.id;
-	User.findById(id, function(error, users) {
-		if (error) {
-			res.send("could not find users");
-		}
-	console.log('Put request recieved');
-	console.log(users);
-	users.firstName = req.body.firstName;
-	users.email = req.body.email;
-	users.password = req.body.password;
-	users.save(function(error) {
-		if (error) {
-			res.sed('Could not find user');
-		}
-		res.redirect('/users');
-	});
-	});
+function updateUser(request, response) {
+	  var id = request.params.id;
+
+
+	  User.findById(id, function(error, users) {
+	    if (error) {
+	      response.send('Could not find user b/c:' + error);
+	    }
+	    console.log('PUT REQUEST RECEIVED');
+	    console.log(users);
+	    users.local.email = request.body.email;
+	    users.local.password = request.body.password;
+	    users.save(function(error) {
+	      if (error) {
+	        response.send('Could not update user b/c:' + error);
+	      }
+	      response.redirect('/users');
+	    });
+	  });
 }
 
 //DELETE destroy
-function destroyUser(req, res) {
-	var id = req.params.id;
-	console.log('Delete request made');
-	User.remove( {_id: id}, function (error) {
-		if (error) res.send("could not delete user");
-	} )
+function destroyUser(request, response) {
+  var id = request.params.id;
+  console.log('DELETE REQUEST RECEIVED');
+  User.remove({
+    _id: id
+  }, function(error) {
+    if (error) {
+      response.send('Could not delete user due to: ' + error);
+    }
+    response.redirect('/users');
+  });
 }
 
 
@@ -67,5 +81,6 @@ module.exports = {
 	getIndex: getIndex,
 	getUser: getUser,
 	editUser: editUser,
-	destroyUser: destroyUser
+	destroyUser: destroyUser,
+	updateUser: updateUser
 }
