@@ -34,8 +34,10 @@ function create(req, res){
 			if(error) return console.log(error)
 			var zomatoResults = JSON.parse(body)
 			console.log("zomato results are " + zomatoResults)
+			var name = req.body.name
 			var zid = req.body.zomato_id
 			console.log('zid is ' + zid)
+			restaurant.name = name
 			restaurant.zomato_id = zid
 			restaurant.save(function(error) {
 				if(error) throw error
