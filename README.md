@@ -1,7 +1,7 @@
 # Burrito-App!
 
-It's like grindr...but with burritos.  The app shows you nearby burrito spots on a google maps along with its basic information(address, menu, phone number, etc).
-The app also incorporates its own rating system that only members of the app can contribute to.  These rating systems include an overall rating, greasy, texmex, and artisanal. 
+It's like grindr...but with burritos.  The app shows you nearby burrito spots on a google maps along with its basic information.
+The app also incorporates its own rating system that only members of the app can contribute to.  These rating systems include an overall rating, greasy, texmex, and artisanal score. 
 
 
 #### Technologies Used
