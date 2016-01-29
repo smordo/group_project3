@@ -72,7 +72,7 @@ function destroyUser(request, response) {
     if (error) {
       response.send('Could not delete user due to: ' + error);
     }
-    response.redirect('/users');
+    response.redirect('/passport/signup');
   });
 }
 
