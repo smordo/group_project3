@@ -1,31 +1,31 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway%7CLobster);
-
+@import url(https://fonts.googleapis.com/css?family=Syncopate);
 html, body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Syncopate', sans-serif;
+    font-size: 17px; 
+    font-weight: bold;
+    background-color: white;
+    color: black;
     height: 100%;
     width: 100%; 
     margin: 0; 
     padding: 0;
-    /*background-image: url(');*/
 }
+body { padding-top: 10px; }
 
 h1, h3 {
-    font-family: 'Lobster', cursive;
     text-align: center;
+    color: black;
 }
-
-p {
-    text-align: center;
-}
-
 .container {
     width: 75%;
 }
-
 ul {
-   list-style-type: none;
+    font-size: 13px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
-           
+
 #map { 
 	height: 100%; 
 	width: 100%;
