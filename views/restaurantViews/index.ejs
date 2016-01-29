@@ -46,36 +46,66 @@
           visible: true,
         });
 
-       var content = '<h3><%= results.restaurants[i].restaurant.name %></h3>' + '<p><%= results.restaurants[i].restaurant.location.address %></p>' + 
+       var content = '<p><%= results.restaurants[i].restaurant.name %></p>' + '<p><%= results.restaurants[i].restaurant.location.address %></p>' + 
        '<p><%= results.restaurants[i].restaurant.R.res_id %></p>' +
 
         '<p>Please Review!</p>' +
         '<div class="form-group col-md-6-offset-3">' +
         '<form method="POST" action="/restaurants">' + 
-        '<div class="form-group col-md-12">' +
-          '<input name="overall_rating"  class="form-control" placeholder="Overall Rating"/>' +
+
+        '<h6> Overall Rating</h6>' + 
+        '<span class="rating">' +
+          '<input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1"/>' +
+          '<label for="rating-input-1-5" class="rating-star"></label>' +
+          '<input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1"/>' +
+          '<label for="rating-input-1-4" class="rating-star"></label>' +
+          '<input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1"/>' +
+          '<label for="rating-input-1-3" class="rating-star"></label>' +
+          '<input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1"/>' +
+          '<label for="rating-input-1-2" class="rating-star"></label>' +
+          '<input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1"/>' +
+          '<label for="rating-input-1-1" class="rating-star"></label>' +
+        '</span>' + 
+
+
+        '<div class="form-group col-md-10">' + 
+        '<h6>Greasy Factor</h6>' + 
+          '<label class="radio-inline"><input type="radio" name="greasy_rating">1</label>' +
+          '<label class="radio-inline"><input type="radio" name="greasy_rating">2</label>' +
+          '<label class="radio-inline"><input type="radio" name="greasy_rating">3</label>' +
+          '<label class="radio-inline"><input type="radio" name="greasy_rating">4</label>' +                   
+          '<label class="radio-inline"><input type="radio" name="greasy_rating">5</label>' +
         '</div>' +
-        '<div class="form-group col-md-3">' +
-          '<input name="greasy_rating"  class="form-control" placeholder="Greasy"/>' +
+
+        '<div class="form-group col-md-10">' +
+        '<h6>Tex Mex Factor</h6>' + 
+          '<label class="radio-inline"><input type="radio" name="tex_mex_rating">1</label>' +
+          '<label class="radio-inline"><input type="radio" name="tex_mex_rating">2</label>' +
+          '<label class="radio-inline"><input type="radio" name="tex_mex_rating">3</label>' +
+          '<label class="radio-inline"><input type="radio" name="tex_mex_rating">4</label>' +                 
+          '<label class="radio-inline"><input type="radio" name="tex_mex_rating">5</label>' +
         '</div>' +
-        '<div class="form-group col-md-3">' +
-          '<input name="tex_mex_rating"  class="form-control" placeholder="Tex Mex"/>' +
+
+        '<div class="form-group col-md-10">' +
+        '<h6>Artisanal Factor</h6>' + 
+          '<label class="radio-inline"><input type="radio" name="artisanal_rating">1</label>' +
+          '<label class="radio-inline"><input type="radio" name="artisanal_rating">2</label>' +
+          '<label class="radio-inline"><input type="radio" name="artisanal_rating">3</label>' +
+          '<label class="radio-inline"><input type="radio" name="artisanal_rating">4</label>' +                
+          '<label class="radio-inline"><input type="radio" name="artisanal_rating">5</label>' +
         '</div>' +
-        '<div class="form-group col-md-3">' +
-          '<input name="artisanal_rating"  class="form-control" placeholder="Artisanal"/>' +
-        '</div>' +
-        '<div class="form-group col-md-3">' +
-          '<input name="review" type="text" class="form-control" placeholder="What did you think?..."/>' +
+        '<div class="form-group col-md-10">' +
+          '<input name="review"  class="form-control" placeholder="What did you think?..."/>' +
         '</div>' +
         '<input type="hidden" name="zomato_id" value="<%= results.restaurants[i].restaurant.R.res_id %>">' +
         '<input type="hidden" name="name" value="<%= results.restaurants[i].restaurant.name %>">' +
         '<div class="form-group col-md-3">' +
-            '<input class="btn btn-primary col-md-12" type="submit" value="Submit">' +
+            '<input class="btn btn-primary col-md-10" type="submit" value="Submit">' +
         '</div>' +
     '</form>' +
-    '<div>'
+    '</div>'
 
-
+   
 
 
 

@@ -33,10 +33,10 @@ function create(req, res){
 }
 
 function show(req, res) {
-	var name = req.params.name;
+	var zomato_id = req.params.zomato_id;
 
-	Restaurant.findOne( {name: name}, function(error, restaurant ) {
-		console.log(name);
+	Restaurant.findOne( {zomato_id: zomato_id}, function(error, restaurant ) {
+		console.log(zomato_id);
 		if(error) console.log(error)
 		res.json(restaurant);
 
@@ -44,27 +44,29 @@ function show(req, res) {
 }
 
 function update(req, res) {
-	var id = req.params.id;
-	Restaurant.findById({_id: id}, function(error, restaurant) {
+	var zomato_id = req.params.zomato_id;
+	Restaurant.findOne({zomato_id: zomato_id}, function(error, restaurant) {
 		if(error) res.json({message: 'Could not find restaurant'});
 
 		if(req.body.overall_rating) restaurant.overall_rating = req.body.overall_rating;
 		if(req.body.greasy_rating) restaurant.greasy_rating = req.body.greasy_rating;
 		if(req.body.tex_mex_rating) restaurant.tex_mex_rating = req.body.tex_mex_rating;
 		if(req.body.artisanal_rating) restaurant.artisanal_rating = req.body.artisanal_rating;
+		if(req.body.review) restaurant.review = req.body.review;
+
 
 		restaurant.save(function(error) {
 			if(error) res.json({ message: 'Could not update restaurant'});
 
-			res.json({message: 'Updated review!'});
+			res.json({message: 'Updated restaurant!'});
 		})
 	})
 }
 
 function remove(req, res) {
-	var id = req.params.id;
+	var zomato_id = req.params.zomato_id;
 
-	Restaurant.remove({_id: id}, function(error) {
+	Restaurant.remove({zomato_id: zomato_id}, function(error) {
 		if(error) res.json({message: 'Could not delete restaurant'});
 
 		res.json({message: 'Restaurant successfully deleted!'});

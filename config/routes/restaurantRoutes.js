@@ -4,7 +4,7 @@ var express    			  = require('express'),
 
 router.route('/')
 //GET ALL
-	.get(restaurantsController.index)
+	// .get(restaurantsController.index)
 //CREATE AFTER FORM SUBMISSION
 	.post(restaurantsController.create)
 
