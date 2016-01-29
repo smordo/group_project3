@@ -7,10 +7,11 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"> </script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
   </head>
-  <body>
+  <body class="container-fluid">
   <ul class="nav nav-pills">
   	<li role="presentation" class="active"><a href="/restaurants">Home</a></li>
   	<% if (user) { %>
+              <li><a href="#">Welcome <%=user.local.email%>!</a></li>
               <li><a href="/passport/logout">Logout</a></li<a>
               <li><a href="/users/<%= user._id %>"> View Your Profile</a></li>
 

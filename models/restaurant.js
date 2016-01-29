@@ -5,10 +5,11 @@ var	mongoose = require( 'mongoose' )
 
 var restaurantSchema = new mongoose.Schema( {
 	zomato_id : Number,
-	overall_rating: Number,
-	greasy_rating: Number,
-	tex_mex_rating: Number,
-	artisanal_rating: Number,
+	name: { type : String, required : true },
+  	overall_rating : { type: Number, required: true},
+	greasy_rating: {type: Number, required: true},
+	tex_mex_rating: {type: Number, required: true},
+	artisanal_rating: {type: Number, required: true},
 	review: String
 } )
 
