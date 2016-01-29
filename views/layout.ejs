@@ -12,10 +12,11 @@
   	<li role="presentation" class="active"><a href="#">Create Restaurant</a></li>
   	<% if (user) { %>
               <li><a href="/passport/logout">Logout</a></li<a>
-            <% } else { %>
+              <li><a href="/users/<%= user._id %>"> View Your Profile</a></li>
+
+          <% } else { %>
               <li><a href="/passport/login">Login</a></li>
               <li><a href="/passport/signup">Signup</a></li>
-             
             <% } %>
   </ul>
     <%- body %>
