@@ -50,16 +50,44 @@ function create(req, res){
 
 // GET ONE
 function show(req, res) {
-	var zomato_id = req.params.zomato_id;
-	Restaurant.findOne( {zomato_id: zomato_id}, function(error, restaurant ) {
+	var id = req.params.zomato_id;
+	Restaurant.find( {zomato_id: id}, function(error, restaurants ) {
 		if(error) console.log(error);
+		// var restaurants = restaurants;
 		zomato.getRestaurants(function(error, response, body){
 			if(error) return console.log(error)
 			var zomatoResult = JSON.parse(body)
-			res.render( 'restaurantViews/show', {restaurant: restaurant, result: zomatoResult});
+
+			var totalOverall= 0;
+			var totalGreasy= 0;
+			var totalArtisanal= 0;
+			var totalTexMex= 0;
+			var restaurantCount= 0;
+			// console.log("restaurants before the loops are", restaurants)
+			// var restaurantsj = JSON.parse(restaurants)
+
+
+			for(var i=0; i< restaurants.length; i++) {
+					// if (restaurants[i].zomato_id === id) {
+									restaurantCount++;
+									totalOverall += restaurants[i].overall_rating;
+									totalGreasy += restaurants[i].greasy_rating;
+									totalArtisanal += restaurants[i].artisanal_rating;
+									totalTexMex += restaurants[i].tex_mex_rating;
+					};
+			console.log("overall total", totalOverall)
+			console.log("greasy total", totalGreasy)
+			console.log("rest count", restaurantCount)
+
+			var avgOverall = (totalOverall/restaurantCount);
+			var avgGreasy= (totalGreasy/restaurantCount);
+			var avgArtisanal = (totalArtisanal/restaurantCount);
+			var avgTexMex = (totalTexMex/restaurantCount);
+			console.log(restaurantCount)
+			console.log(totalGreasy)
+
+			res.render( 'restaurantViews/show', {restaurant: restaurants[0], result: zomatoResult, avgOverall:avgOverall, avgGreasy:avgGreasy, avgArtisanal:avgArtisanal, avgTexMex:avgTexMex});
 			})
-
-
 	})
 }
 
