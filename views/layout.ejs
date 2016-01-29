@@ -10,8 +10,15 @@
   <body>
   <ul class="nav nav-pills">
   	<li role="presentation" class="active"><a href="#">Create Restaurant</a></li>
-  	<li role="presentation"><a href="#">Profile</a></li>
-  	<li role="presentation"><a href="#">Log Out</a></li>
+  	<% if (user) { %>
+              <li><a href="/passport/logout">Logout</a></li<a>
+              <li><a href="/users/<%= user._id %>"> View Your Profile</a></li>
+
+          <% } else { %>
+              <li><a href="/passport/login">Login</a></li>
+              <li><a href="/passport/signup">Signup</a></li>
+              <li><a href="/restaurants">Home</a></li>
+            <% } %>
   </ul>
     <%- body %>
   </body>

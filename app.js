@@ -19,7 +19,8 @@ var apiRoutes = require('./config/routes/apiRoutes');
 var zomato = require('./config/routes/zomato')
 
 //connect to mongodb via mongoose
-mongoose.connect('mongodb://localhost/burrito-app');
+var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost/burrito-app';
+mongoose.connect(mongoUri);
 
 //middleware for logger and parsers
 app.use(morgan('dev'));
@@ -58,7 +59,9 @@ app.use(function (req, res, next) {
   next()
 });
 
-
+app.get( '/', function(req, res){
+	res.redirect('/restaurants')
+});
 app.use('/users', userRoutes);
 app.use('/passport', passportRoutes);
 app.use( '/restaurants', restaurantRoutes);
@@ -66,4 +69,4 @@ app.use('/api', apiRoutes);
 app.use('/zomato', zomato);
 
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000 )
