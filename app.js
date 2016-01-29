@@ -63,6 +63,10 @@ app.get( '/', function(req, res){
 	res.redirect('/restaurants')
 });
 
+///////////////////////////////////////
+//middleware redirect to sign up page 
+
+
 var Restaurant = require('./models/restaurant')
 var Zomato = require('./config/zomato')
 
@@ -86,10 +90,9 @@ function isLoggedIn(req, res, next) {
 	res.redirect("/passport/signup");
 }
 
-// function authenticatedUser(req, res, next){
-//   if (req.isAuthenticated() ) return next();
-//   res.redirect('/');
-// }
+///////////////////////////////////////
+
+
 
 app.use('/users', userRoutes);
 app.use('/passport', passportRoutes);
