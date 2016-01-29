@@ -6,7 +6,7 @@ var	mongoose = require( 'mongoose' )
 var restaurantSchema = new mongoose.Schema( {
 	zomato_id : Number,
 	name: String,
-  	overall_rating : Number,
+  	overall_rating : { type: Number, default: 0 },
 	greasy_rating: Number,
 	tex_mex_rating: Number,
 	artisanal_rating: Number,
