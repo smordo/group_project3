@@ -16,9 +16,7 @@ function index( req, res ) {
 // GET NEW FORM
 function newRestaurant(req, res) {
   	console.log("FORM RENDERED FOR NEW DOCUMENT");
-  	res.render('../views/restaurantViews/new', {
-    title: "Create New Restaurant"
-  });
+		res.render('restaurantViews/new')
 }
 
 // CREATE
@@ -32,21 +30,37 @@ function create(req, res){
 	restaurant.greasy_rating = req.body.greasy_rating;
 	restaurant.tex_mex_rating = req.body.tex_mex_rating;
 	restaurant.artisanal_rating = req.body.artisanal_rating;
+		//get zomato and save to local id
+	zomato.getRestaurants(function(error, response, body){
+			if(error) return console.log(error)
+			var zomatoResults = JSON.parse(body)
+			console.log("zomato results are " + zomatoResults)
+			var zid = zomatoResults.restaurants[0].restaurant.R.res_id
+			console.log('zid is ' + zid)
+			restaurant.zomato_id = zid
+			restaurant.save(function(error) {
+				if(error) throw error
+				res.redirect('/restaurants')
+			});
+			console.log("the restaurant is ", restaurant)
 
-	restaurant.save(function(error) {
-		if(error) throw error
-		res.redirect('/restaurants')
-	});
-}
+	})
+
+
+ }
+
 
 // GET ONE
 function show(req, res) {
-	var name = req.params.name;
-	Restaurant.findOne( {name: name}, function(error, restaurant ) {
-		console.log(name);
-		if(error) console.log(error)
+	var id = req.params.id;
+	Restaurant.findOne( {zomato_id: id}, function(error, restaurant ) {
+		if(error) console.log(error);
+		zomato.getRestaurants(function(error, response, body){
+			if(error) return console.log(error)
+			var zomatoResult = JSON.parse(body)
+			res.render( 'restaurantViews/show', {restaurant: restaurant, result: zomatoResult});
+			})
 
-		res.render('../views/restaurantViews/show', ({restaurant: restaurant}));
 
 	})
 }
