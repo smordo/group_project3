@@ -5,10 +5,16 @@
 </head>
 <body>
 	<h1><%= users.local.email %></h1>
+	<br>
+	<br>
 	
 	<form method="get" action="/users/<%=users._id%>/edit">
 		<input type="hidden" name="_method" class="btn btn-default" value="edit">
 		<button type="submit">Edit</button>
+
+		&nbsp
+		&nbsp
+		&nbsp
 
 
 	<form method="post" action="/users/<%= users._id %>">
@@ -17,3 +23,15 @@
 </form>
 
 </body>
+
+<style type="text/css">
+	
+	body {
+		margin: auto;
+		text-align: center;
+		position: relative;
+
+	}
+
+
+</style>
