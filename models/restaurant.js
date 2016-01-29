@@ -4,13 +4,12 @@ var	mongoose = require( 'mongoose' )
 //creates restaurant Schema
 var restaurantSchema = new mongoose.Schema( {
 	zomato_id : Number,
-	latitude: Number,
-	longitude: Number,
 	name: String,
-  overall_rating : Number,
+  	overall_rating : Number,
 	greasy_rating: Number,
 	tex_mex_rating: Number,
-	artisanal_rating: Number
+	artisanal_rating: Number,
+	review: String
 } )
 
 
