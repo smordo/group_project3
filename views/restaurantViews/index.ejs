@@ -2,10 +2,8 @@
     <% for(var i=0; i< restaurants.length; i++) { %>
 
       <ul class="list-group">
-        <li class="list-group-item">Name : <strong><%= restaurants[i].name%></strong></li>
         <li class="list-group-item">Overall Rating : <span class="badge"><%= restaurants[i].overall_rating%> </span> </li>
-        <li class="list-group-item">Latitude : <span class="badge"><%= restaurants[i].zomato_id%> </span> </li>
-        <li class="list-group-item">Longitude : <span class="badge"><%= restaurants[i].longitude%> </span> </li>
+        <li class="list-group-item">Zomato ID : <span class="badge"><%= restaurants[i].zomato_id%> </span> </li>
         <li class="list-group-item">Greasy Rating : <span class="badge"><%= restaurants[i].greasy_rating%> </span> </li>
         <li class="list-group-item">Tex-Mex Rating : <span class="badge"><%= restaurants[i].tex_mex_rating%> </span> </li>
         <li class="list-group-item">Artisanal Rating : <span class="badge"><%= restaurants[i].artisanal_rating%> </span> </li>
