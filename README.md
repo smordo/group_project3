@@ -43,11 +43,11 @@ Once you're logged in, click on pins to see information about that restaurant su
 <br>
 
 <br>
-![Alt text].(./public/images/Project_3_SignedIn.png)
+![Alt text](./public/images/Project_3_SignedIn.png)
 
 ######Feel free to leave a review of your own!
 If you've been to that restaurant, please leave a review of your own so that other burrito lovers can benefit from your knowledge
-![Alt text].(./public/images/Project_3_Focus.png)
+![Alt text](./public/images/Project_3_Focus.png)
 
 ######View Your Profile
 If your logged in, click on the view your profile button on the nav bar to edit or delete your profile
