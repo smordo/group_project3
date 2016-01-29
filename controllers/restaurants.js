@@ -52,17 +52,13 @@ function create(req, res){
 
 // GET ONE
 function show(req, res) {
-		result.findOne({id:id})
-	Restaurant.findOne( {name: name}, function(error, restaurant ) {
-		console.log(name);
-		if(error) console.log(error)
-
+	var id = req.params.id;
+	Restaurant.findOne( {zomato_id: id}, function(error, restaurant ) {
+		if(error) console.log(error);
 		zomato.getRestaurants(function(error, response, body){
 			if(error) return console.log(error)
 			var zomatoResult = JSON.parse(body)
 			res.render( 'restaurantViews/show', {restaurant: restaurant, result: zomatoResult});
-			var id = req.params.id
-
 			})
 
 
