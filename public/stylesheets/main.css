@@ -19,6 +19,14 @@ p, h1, h3, h4 {
     color: black;
 }
 
+.login, .signup {
+    color: white;
+}
+
+label {
+    color: white;
+}
+
 .container {
     width: 75%;
 }
