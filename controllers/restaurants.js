@@ -24,10 +24,7 @@ function create(req, res){
 	console.log( "Body is ", req.body )
 	var restaurant = new Restaurant();
 
-	restaurant.name = req.body.name;
 	restaurant.overall_rating = req.body.overall_rating;
-	restaurant.latitude = req.body.latitude;
-	restaurant.longitude = req.body.longitude;
 	restaurant.greasy_rating = req.body.greasy_rating;
 	restaurant.tex_mex_rating = req.body.tex_mex_rating;
 	restaurant.artisanal_rating = req.body.artisanal_rating;
@@ -54,15 +51,41 @@ function create(req, res){
 // GET ONE
 function show(req, res) {
 	var id = req.params.id;
-	Restaurant.findOne( {zomato_id: id}, function(error, restaurant ) {
+	Restaurant.find( {zomato_id: id}, function(error, restaurants ) {
 		if(error) console.log(error);
+		// var restaurants = restaurants;
 		zomato.getRestaurants(function(error, response, body){
 			if(error) return console.log(error)
 			var zomatoResult = JSON.parse(body)
-			res.render( 'restaurantViews/show', {restaurant: restaurant, result: zomatoResult});
+
+			var totalOverall= 0;
+			var totalGreasy= 0;
+			var totalArtisanal= 0;
+			var totalTexMex= 0;
+			var restaurantCount= 0;
+			// console.log("restaurants before the loops are", restaurants)
+			// var restaurantsj = JSON.parse(restaurants)
+			restaurants.forEach(function(r){
+
+			for(var i=0; i< restaurants.length; i++) {
+					// if (restaurants[i].zomato_id === id) {
+									restaurantCount++;
+									totalOverall += restaurants[i].overall_rating;
+									totalGreasy += restaurants[i].greasy_rating;
+									totalArtisanal += restaurants[i].artisanal_rating;
+									totalTexMex += restaurants[i].tex_mex_rating;
+					};
 			})
+			console.log("overall total", totalOverall)
+			console.log("greasy total", totalGreasy)
+			console.log("rest count", restaurantCount)
 
-
+			var avgOverall = (totalOverall/restaurantCount);
+			var avgGreasy= (totalOverall/restaurantCount);
+			var avgArtisanal = (totalOverall/restaurantCount);
+			var avgTexMex = (totalOverall/restaurantCount);
+			res.render( 'restaurantViews/show', {restaurant: restaurants[0], result: zomatoResult, avgOverall:avgOverall, avgGreasy:avgGreasy, avgArtisanal:avgArtisanal, avgTexMex:avgTexMex});
+			})
 	})
 }
 
