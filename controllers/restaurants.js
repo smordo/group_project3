@@ -14,7 +14,7 @@ function index( req, res ) {
 }
 
 // GET NEW FORM
-function new(req, res) {
+function newRestaurant(req, res) {
   	console.log("FORM RENDERED FOR NEW DOCUMENT");
 		res.render('restaurantViews/new')
 }
@@ -83,15 +83,15 @@ function update(req, res) {
 		console.log('PUT REQUEST RECEIVED');
     	console.log(restaurant);
 
-		restaurant.overall_rating = req.body.overall_rating;
-		restaurant.greasy_rating = req.body.greasy_rating;
-		restaurant.tex_mex_rating = req.body.tex_mex_rating;
-		restaurant.artisanal_rating = req.body.artisanal_rating;
-		restaurant.review = req.body.review;
+		if (req.body.overall_rating) restaurant.overall_rating = req.body.overall_rating;
+		if (req.body.greasy_rating) restaurant.greasy_rating = req.body.greasy_rating;
+		if (req.body.tex_mex_rating) restaurant.tex_mex_rating = req.body.tex_mex_rating;
+		if (req.body.artisinal_rating) restaurant.artisanal_rating = req.body.artisanal_rating;
+		if (req.body.review) restaurant.review = req.body.review;
 
 		restaurant.save
 					(function(error) {
-			if(error) console.log( "could not update skateboard b/c " + error )
+			if(error) console.log( "could not update restaurant b/c " + error )
 			res.redirect('/restaurants')
 		});
 	})
@@ -110,7 +110,7 @@ function remove(req, res) {
 
 module.exports = {
 	index: index,
-	new: new,
+	newRestaurant: newRestaurant,
 	create: create,
 	edit:edit,
 	show: show,
