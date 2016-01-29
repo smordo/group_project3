@@ -2,6 +2,7 @@ var	mongoose = require( 'mongoose' )
 
 
 //creates restaurant Schema
+
 var restaurantSchema = new mongoose.Schema( {
 	zomato_id : Number,
 	latitude: Number,
@@ -14,6 +15,11 @@ var restaurantSchema = new mongoose.Schema( {
 } )
 
 
+
+restaurantSchema.pre("save", function(next){
+	console.log("this is", this)
+	next()
+})
 //exports restaurant mongoose model
 var Restaurant = mongoose.model( 'Restaurant', restaurantSchema )
 
