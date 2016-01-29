@@ -1,31 +1,18 @@
 
     <div class= "container">
-  <div>
     <ul class="list-group">
-      <li class="list-group-item">Name : <strong><%= restaurant.name%></strong></li>
-      <li class="list-group-item">Name : <strong><%= result.restaurants[0].restaurant.name%></strong></li>
+    <li class="list-group-item">Name : <span class="badge"><%= restaurant.name %> </span> </li>
       <li class="list-group-item">Overall Rating : <span class="badge"><%= restaurant.overall_rating%> </span> </li>
-      <li class="list-group-item">Latitude : <span class="badge"><%= restaurant.latitude%> </span> </li>
-      <li class="list-group-item">Longitude : <span class="badge"><%= restaurant.longitude%> </span> </li>
       <li class="list-group-item">Greasy Rating : <span class="badge"><%= restaurant.greasy_rating%> </span> </li>
       <li class="list-group-item">Tex-Mex Rating : <span class="badge"><%= restaurant.tex_mex_rating%> </span> </li>
       <li class="list-group-item">Artisanal Rating : <span class="badge"><%= restaurant.artisanal_rating%> </span> </li>
-
+      <li class="list-group-item">Artisanal Rating : <span class="badge"><%= restaurant.review%> </span> </li>
     </ul>
 
 
 <h1>Update Restaurant</h1>
-  	<form method="post" action="/restaurants/<%= restaurant.name %>">
+  	<form method="post" action="/restaurants/<%= restaurant.zomato_id %>">
   		<input type="hidden" name="_method" value="put">
-      <div class="form-group col-md-3">
-        <input name="name"  class="form-control" placeholder="Name"/>
-      </div>
-      <div class="form-group col-md-3">
-        <input name="latitude"  class="form-control" placeholder="Latitude"/>
-      </div>
-      <div class="form-group col-md-3">
-        <input name="longitude"  class="form-control" placeholder="Longitude"/>
-      </div>
       <div class="form-group col-md-3">
         <input name="overall_rating"  class="form-control" placeholder="Overall Rating"/>
       </div>
@@ -37,6 +24,9 @@
       </div>
       <div class="form-group col-md-3">
         <input name="artisanal_rating"  class="form-control" placeholder="Artisanal"/>
+      </div>
+      <div class="form-group col-md-3">
+        <input name="review" type="text"  class="form-control" placeholder="Review"/>
       </div>
       <div class="form-group col-md-3">
           <input class="btn btn-primary col-md-12" type="submit" value="Submit", placeholder= "Update Restaurant">

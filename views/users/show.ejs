@@ -6,12 +6,14 @@
 <body>
 	<h1><%= users.local.email %></h1>
 	
-<a href="/users/<%= users._id %>/edit">Edit</a>
+	<form method="get" action="/users/<%=users._id%>/edit">
+		<input type="hidden" name="_method" class="btn btn-default" value="edit">
+		<button type="submit">Edit</button>
 
 
-<form method="post" action="/users/<%= users._id %>">
-	<input type="hidden" name="_method" value="delete" />
-	<button type="submit">Delete</button>
+	<form method="post" action="/users/<%= users._id %>">
+		<input type="hidden" name="_method" class="btn btn-default" value="delete" />
+		<button type="submit">Delete</button>
 </form>
 
 </body>

@@ -62,6 +62,38 @@ app.use(function (req, res, next) {
 app.get( '/', function(req, res){
 	res.redirect('/restaurants')
 });
+
+///////////////////////////////////////
+//middleware redirect to sign up page 
+
+
+var Restaurant = require('./models/restaurant')
+var Zomato = require('./config/zomato')
+
+app.get('/restaurants', isLoggedIn, function(req, res) {
+	// isLoggedIn(req, res, next)
+         Restaurant.find( function( error, restaurants ) {
+              if ( error ) res.json( { message: "Could not find restaurants" } )
+                    console.log(restaurants)
+                    Zomato.getRestaurants(function(error, response, body){
+              if(error) return console.log(error)
+                   var zomatoResults = JSON.parse(body)
+                  res.render( 'restaurantViews/index', {restaurants: restaurants, results: zomatoResults, user: user});
+              } )
+              })
+})
+
+
+function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated() )
+		return next();
+	res.redirect("/passport/signup");
+}
+
+///////////////////////////////////////
+
+
+
 app.use('/users', userRoutes);
 app.use('/passport', passportRoutes);
 app.use( '/restaurants', restaurantRoutes);
