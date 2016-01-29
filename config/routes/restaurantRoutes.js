@@ -12,13 +12,15 @@ router.route('/new')
 // GET NEW FORM
 	.get(restaurantsController.newRestaurant)
 
-router.route('/:name')
+router.route('/:id')
 //GET ONE RESTAURANT
 	.get(restaurantsController.show)
 //SUBMIT EDIT FORM
 	.put(restaurantsController.update)
 //REMOVE ONE RESTAURANT
 	.delete(restaurantsController.remove)
+
+
 
 
 router.route('/:name/edit')
