@@ -31,16 +31,15 @@ If you fork this repo, you must run `npm install` in order for the app to functi
 
 #### Joining the Burrito-App
 
-Welcome to the app! You must signed up or be logged in, in order to use the app.
+Welcome to the app! You must signed up or logged in, in order to use the app.
+<br>
+![Alt text](./public/images/Project_3_Home.png)
 <br>
 
 
 ######Look Around
 
 Once you're logged in, click on pins to see information about that restaurant such as the restaurants overall rating, as well as its greasy, texmex, and artisanal rating based on our app's users
-<br>
-![Alt text](./public/images/Project_3_Home.png)
-<br>
 
 <br>
 ![Alt text](./public/images/Project_3_SignedIn.png)
