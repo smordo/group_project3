@@ -10,7 +10,7 @@ function postSignup(request, response) {
   console.log(request.params)
 
   var signUpStrategy = passport.authenticate('local-signup', {
-    successRedirect : '/users', 
+    successRedirect : '/restaurants', 
     failureRedirect : '/passport/signup', 
     failureFlash : true 
   });
@@ -26,8 +26,8 @@ function getLogin(request, response) {
 // POST /login 
 function postLogin(request, response) {
   var loginProperty = passport.authenticate('local-login', {
-    successRedirect : '/', 
-    failureRedirect : '/login', 
+    successRedirect : '/restaurants', 
+    failureRedirect : '/passport/login', 
     failureFlash : true 
   });
 
