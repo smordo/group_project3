@@ -12,7 +12,7 @@ router.route('/new')
 	.get(restaurantsController.newRestaurant)
 
   //search api by restaurant name
-router.route('/:name')
+router.route('/:id')
 	.get(restaurantsController.show)
 	.put(restaurantsController.update)
 	.delete(restaurantsController.remove)
