@@ -12,7 +12,7 @@ router.route('/new')
 // GET NEW FORM
 	.get(restaurantsController.newRestaurant)
 
-router.route('/:id')
+router.route('/:zomato_id')
 //GET ONE RESTAURANT
 	.get(restaurantsController.show)
 //SUBMIT EDIT FORM
@@ -20,10 +20,7 @@ router.route('/:id')
 //REMOVE ONE RESTAURANT
 	.delete(restaurantsController.remove)
 
-
-
-
-router.route('/:name/edit')
+router.route('/:zomato_id/edit')
 //GET EDIT FORM
 	.get(restaurantsController.edit)
 
