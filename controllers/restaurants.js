@@ -41,13 +41,10 @@ function create(req, res){
 			restaurant.zomato_id = zid
 			restaurant.save(function(error) {
 				if(error) throw error
-				res.redirect('/restaurants')
+				res.redirect('/restaurants/' + restaurant.zomato_id )
 			});
 			console.log("the restaurant is ", restaurant)
-
 	})
-
-
  }
 
 
