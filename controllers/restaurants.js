@@ -14,7 +14,7 @@ function index( req, res ) {
 }
 
 // GET NEW FORM
-function newRestaurant(req, res) {
+function new(req, res) {
   	console.log("FORM RENDERED FOR NEW DOCUMENT");
 		res.render('restaurantViews/new')
 }
@@ -24,13 +24,11 @@ function create(req, res){
 	console.log( "Body is ", req.body )
 	var restaurant = new Restaurant();
 
-	restaurant.name = req.body.name;
 	restaurant.overall_rating = req.body.overall_rating;
-	restaurant.latitude = req.body.latitude;
-	restaurant.longitude = req.body.longitude;
 	restaurant.greasy_rating = req.body.greasy_rating;
 	restaurant.tex_mex_rating = req.body.tex_mex_rating;
 	restaurant.artisanal_rating = req.body.artisanal_rating;
+	restaurant.review = req.body.review;
 		//get zomato and save to local id
 	zomato.getRestaurants(function(error, response, body){
 			if(error) return console.log(error)
@@ -53,8 +51,8 @@ function create(req, res){
 
 // GET ONE
 function show(req, res) {
-	var id = req.params.id;
-	Restaurant.findOne( {zomato_id: id}, function(error, restaurant ) {
+	var zomato_id = req.params.zomato_id;
+	Restaurant.findOne( {zomato_id: zomato_id}, function(error, restaurant ) {
 		if(error) console.log(error);
 		zomato.getRestaurants(function(error, response, body){
 			if(error) return console.log(error)
@@ -68,8 +66,8 @@ function show(req, res) {
 
 //GET FORM TO EDIT
 function edit(req, res) {
-	var name = req.params.name;
-	Restaurant.findOne( {name: name}, function(error, restaurant ) {
+	var zomato_id = req.params.zomato_id;
+	Restaurant.findOne( {zomato_id: zomato_id}, function(error, restaurant ) {
     res.render('../views/restaurantViews/edit', ({
       restaurant:restaurant
     }));
@@ -79,18 +77,17 @@ function edit(req, res) {
 
 //SUBMIT PUT
 function update(req, res) {
-	var name = req.params.name;
-	Restaurant.findOne({name: name}, function(error, restaurant) {
+	var zomato_id = req.params.zomato_id;
+	Restaurant.findOne({zomato_id: zomato_id}, function(error, restaurant) {
 		if(error) res.json({message: 'Could not find restaurant'});
 		console.log('PUT REQUEST RECEIVED');
-    console.log(restaurant);
-		restaurant.name = req.body.name;
-	  restaurant.latitude = req.body.latitude;
-		restaurant.longitude = req.body.longitude;
+    	console.log(restaurant);
+
 		restaurant.overall_rating = req.body.overall_rating;
 		restaurant.greasy_rating = req.body.greasy_rating;
 		restaurant.tex_mex_rating = req.body.tex_mex_rating;
 		restaurant.artisanal_rating = req.body.artisanal_rating;
+		restaurant.review = req.body.review;
 
 		restaurant.save
 					(function(error) {
@@ -102,9 +99,9 @@ function update(req, res) {
 
 //DESTROY ONE
 function remove(req, res) {
-	var name = req.params.name;
+	var zomato_id = req.params.zomato_id;
 
-	Restaurant.remove({name: name}, function(error) {
+	Restaurant.remove({zomato_id: zomato_id}, function(error) {
 		if(error) res.json({message: 'Could not delete restaurant'});
 		// res.redirect('/restaurants');
 		console.log("restaurant removed")
@@ -113,7 +110,7 @@ function remove(req, res) {
 
 module.exports = {
 	index: index,
-	newRestaurant: newRestaurant,
+	new: new,
 	create: create,
 	edit:edit,
 	show: show,
