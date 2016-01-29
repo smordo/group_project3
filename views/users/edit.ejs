@@ -4,6 +4,7 @@
 	<title>Edit User</title>
 </head>
 <body>
+	<h1>Edit Your Name!</h1>
 	<form method="post" action="/users/<%= users._id %>">
 		<input type="hidden" name="_method" value="put">
 		<input type="text" name="email" value="<%= users.email %>">
@@ -12,3 +13,15 @@
 	</form>
 </body>
 </html>
+
+<style type="text/css">
+	
+	body {
+		margin: auto;
+		text-align: center;
+		position: relative;
+
+	}
+
+
+</style>

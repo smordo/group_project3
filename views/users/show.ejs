@@ -5,15 +5,31 @@
 </head>
 <body>
 	<h1><%= users.local.email %></h1>
+	<br>
+	<br>
 	
-	<form method="get" action="/users/<%=users._id%>/edit">
+	<!-- <form method="get" action="/users/<%=users._id%>/edit">
 		<input type="hidden" name="_method" class="btn btn-default" value="edit">
-		<button type="submit">Edit</button>
+		<button type="submit">Edit</button> -->
+
+	<a href="/users/<%= users._id %>/edit">Edit</a>
 
 
 	<form method="post" action="/users/<%= users._id %>">
-		<input type="hidden" name="_method" class="btn btn-default" value="delete" />
+		<input type="hidden" name="_method" class="btn btn-default" value="delete" >
 		<button type="submit">Delete</button>
 </form>
 
 </body>
+
+<style type="text/css">
+	
+	body {
+		margin: auto;
+		text-align: center;
+		position: relative;
+
+	}
+
+
+</style>
