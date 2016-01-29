@@ -4,6 +4,7 @@
 
     <br>
 
+
     <h1 class="signup">Signup</h1>
 
     <% if (message.length > 0) { %>
@@ -11,8 +12,7 @@
     <div class="alert alert-danger"><%= message %></div>
     <% } %>
 
-    <form class="form-horizontal">
-
+    <form class="form-horizontal" method="post" action="signup">
 <div class="form-group">
     <label for="email" class = "control-label">Email</label>
       <div class="col-sm-4">
