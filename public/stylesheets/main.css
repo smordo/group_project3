@@ -19,6 +19,10 @@ h1, h3 {
 .container {
     width: 75%;
 }
+
+p {
+    text-align: center;
+}
 ul {
     font-size: 13px;
     list-style-type: none;
