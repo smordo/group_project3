@@ -79,10 +79,10 @@ function show(req, res) {
 			console.log("greasy total", totalGreasy)
 			console.log("rest count", restaurantCount)
 
-			var avgOverall = (totalOverall/restaurantCount);
-			var avgGreasy= (totalGreasy/restaurantCount);
-			var avgArtisanal = (totalArtisanal/restaurantCount);
-			var avgTexMex = (totalTexMex/restaurantCount);
+			var avgOverall = (totalOverall/restaurantCount).toFixed(1);
+			var avgGreasy= (totalGreasy/restaurantCount).toFixed(1);
+			var avgArtisanal = (totalArtisanal/restaurantCount).toFixed(1);
+			var avgTexMex = (totalTexMex/restaurantCount).toFixed(1);
 			console.log(restaurantCount)
 			console.log(totalGreasy)
 
