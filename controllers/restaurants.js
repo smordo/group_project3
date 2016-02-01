@@ -1,10 +1,12 @@
 var Restaurant = require('../models/restaurant.js'),
 	zomato = require('../config/zomato.js')
 
+//find all restaurants
 function index( req, res ) {
 	Restaurant.find( function( error, restaurants ) {
 		if ( error ) res.json( { message: "Could not find restaurants" } )
 		console.log(restaurants)
+//call to zomato API for all restaurants
 		zomato.getRestaurants(function(error, response, body){
 			if(error) return console.log(error)
 			var zomatoResults = JSON.parse(body)
@@ -24,12 +26,13 @@ function create(req, res){
 	console.log( "Body is ", req.body )
 	var restaurant = new Restaurant();
 
+//pair req.body fields with schema
 	restaurant.overall_rating = req.body.overall_rating;
 	restaurant.greasy_rating = req.body.greasy_rating;
 	restaurant.tex_mex_rating = req.body.tex_mex_rating;
 	restaurant.artisanal_rating = req.body.artisanal_rating;
 	restaurant.review = req.body.review;
-		//get zomato and save to local id
+		//get zomato name and id  and save to local id
 	zomato.getRestaurants(function(error, response, body){
 			if(error) return console.log(error)
 			var zomatoResults = JSON.parse(body)
@@ -53,22 +56,20 @@ function show(req, res) {
 	var id = req.params.zomato_id;
 	Restaurant.find( {zomato_id: id}, function(error, restaurants ) {
 		if(error) console.log(error);
-		// var restaurants = restaurants;
+		// call to Zomato api
 		zomato.getRestaurants(function(error, response, body){
 			if(error) return console.log(error)
 			var zomatoResult = JSON.parse(body)
-
+			//declare the ratings variables
 			var totalOverall= 0;
 			var totalGreasy= 0;
 			var totalArtisanal= 0;
 			var totalTexMex= 0;
 			var restaurantCount= 0;
-			// console.log("restaurants before the loops are", restaurants)
-			// var restaurantsj = JSON.parse(restaurants)
 
 
+			//count and average the ratings
 			for(var i=0; i< restaurants.length; i++) {
-					// if (restaurants[i].zomato_id === id) {
 									restaurantCount++;
 									totalOverall += restaurants[i].overall_rating;
 									totalGreasy += restaurants[i].greasy_rating;
@@ -127,7 +128,7 @@ function update(req, res) {
 //DESTROY ONE
 function remove(req, res) {
 	var zomato_id = req.params.zomato_id;
-
+	//search by zomato id and remove
 	Restaurant.remove({zomato_id: zomato_id}, function(error) {
 		if(error) res.json({message: 'Could not delete restaurant'});
 		// res.redirect('/restaurants');
