@@ -64,7 +64,7 @@ app.get( '/', function(req, res){
 });
 
 ///////////////////////////////////////
-//middleware redirect to sign up page 
+//middleware redirect to sign up page if not logged in
 
 
 var Restaurant = require('./models/restaurant')
