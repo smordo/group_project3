@@ -1,1 +1,0 @@
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
