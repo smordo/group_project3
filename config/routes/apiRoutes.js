@@ -12,7 +12,7 @@ router.route('/new')
 	.get(apiController.newRestaurant)
 
   //search api by restaurant name
-router.route('/:id')
+router.route('/:zomato_id')
 	.get(apiController.show)
 	.put(apiController.update)
 	.delete(apiController.remove)
