@@ -4,6 +4,7 @@
       var map;
       var infowindow = null;
 
+      //Initializes map and sets initial properties
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 34.052234, lng: -118.243685},
@@ -12,6 +13,7 @@
           mapTypeControl: false,
         });
 
+        //Grabs user location if allowed and centers map upon it
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function (position) {
           initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -19,6 +21,7 @@
         });
       } 
      
+     //Cycles through zomato API and grabs latitude and longitude from each restaurant object
       <% for(var i=0; i< results.restaurants.length; i++) { %>
 
         var latitude  = <%= results.restaurants[i].restaurant.location.latitude %>
@@ -26,11 +29,13 @@
 
         var location = new google.maps.LatLng(latitude,longitude);
 
+        //Initializes markers and sets locations based on zomato latitude and longitude above
         var marker = new google.maps.Marker({
           position: location,
           visible: true,
         });
 
+        //Infowindow content
         var content = '<h3><%= results.restaurants[i].restaurant.name %></h3>' + '<p><%= results.restaurants[i].restaurant.location.address %></p>' + 
 
           '<h4>Please Review!</h4>' +
@@ -84,6 +89,7 @@
             '</form>' +
           '</div>'
 
+        //Creates maps infowindows for each marker and sets content within
         var infowindow = new google.maps.InfoWindow()
 
         google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
@@ -93,6 +99,7 @@
           };
         })(marker,content,infowindow)); 
 
+        //Creates markers on map
         marker.setMap(map)
 
       <% }  %>
