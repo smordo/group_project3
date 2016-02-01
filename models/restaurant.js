@@ -14,7 +14,7 @@ var restaurantSchema = new mongoose.Schema( {
 } )
 
 
-
+//pushes create function along after API call and matching
 restaurantSchema.pre("save", function(next){
 	console.log("this is", this)
 	next()
