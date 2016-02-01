@@ -5,6 +5,7 @@
 </head>
 <body>
 	<h1>Edit Your Name!</h1>
+	<!-- when click submit, got to the action uri -->
 	<form method="post" action="/users/<%= users._id %>">
 		<input type="hidden" name="_method" value="put">
 		<input type="text" name="email" value="<%= users.email %>">
