@@ -1,21 +1,21 @@
 var express = require('express'),
     router = express.Router(),
-    restaurantsController = require('../../controllers/api');
+    apiController = require('../../controllers/api');
 
 //adds route route for api request
 router.route('/')
-	.get(restaurantsController.index)
-	.post(restaurantsController.create)
+	.get(apiController.index)
+	.post(apiController.create)
 
 //create new restaurant
 router.route('/new')
-	.get(restaurantsController.newRestaurant)
+	.get(apiController.newRestaurant)
 
   //search api by restaurant name
 router.route('/:id')
-	.get(restaurantsController.show)
-	.put(restaurantsController.update)
-	.delete(restaurantsController.remove)
+	.get(apiController.show)
+	.put(apiController.update)
+	.delete(apiController.remove)
 
 //export router
 module.exports = router
