@@ -29,7 +29,7 @@ The app also incorporates its own rating system that only members of the app can
 
 If you fork this repo, you must run `npm install` in order for the app to function properly.
 
-#### Joining the Burrito-App
+#### Joining BurritoFinder
 
 Welcome to the app! You must signed-up or logged-in in order to use the app.
 
