@@ -1,4 +1,4 @@
-# Project 3: BurritoFinder
+# PROJECT 3: BurritoFinder
 
 It's like grindr...but with burritos.  The app shows you nearby burrito spots on a google maps along with its basic information.
 The app also incorporates its own rating system that only members of the app can contribute to.  These rating systems include an overall rating, and greasy, tex mex, and artisanal scores. 
