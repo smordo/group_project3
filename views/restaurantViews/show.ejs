@@ -1,10 +1,10 @@
 <!-- display average ratings in show page -->
-    <div class= "container">
-    <ul class="list-group">
-    </div>
-      <li class="list-group-item">Name : <strong><%= restaurant.name%></strong></li>
-      <li class="list-group-item">Average Overall Rating : <span class="badge"><%= avgOverall%> </span> </li>
-      <li class="list-group-item">Average Greasy Rating : <span class="badge"><%= avgGreasy%> </span> </li>
-      <li class="list-group-item">Average Tex-Mex Rating : <span class="badge"><%= avgTexMex%> </span> </li>
-      <li class="list-group-item"> Average Artisanal Rating : <span class="badge"><%= avgArtisanal%> </span> </li>
-    </ul>
+<div class= "container">
+	<ul class="list-group">
+	 	<h3 class="restaurantTitle"><%= restaurant.name%></h3>
+		<li class="list-group-item">Average Overall Rating : <span class="badge"><%= avgOverall%> </span> </li>
+		<li class="list-group-item">Average Greasy Factor : <span class="badge"><%= avgGreasy%> </span> </li>
+		<li class="list-group-item">Average Tex Mex Factor : <span class="badge"><%= avgTexMex%> </span> </li>
+		<li class="list-group-item"> Average Artisanal Factor : <span class="badge"><%= avgArtisanal%> </span> </li>
+	</ul>
+</div>
