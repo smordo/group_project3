@@ -37,7 +37,7 @@ Welcome to the app! You must signed-up or logged-in in order to use the app.
 
 ######Look Around
 
-Once you're logged in, click on pins to see information about that restaurant such as the restaurant's overall rating, as well as its greasy, texmex, and artisanal rating based on our app's users.
+Once you're logged in, click on pins to see information about that restaurant such as the restaurant's overall rating, as well as its greasy, tex mex, and artisanal rating based on our app's users.
 
 ![Alt text](./public/images/Project_3_SignedIn.png)
 
