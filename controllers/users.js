@@ -57,7 +57,7 @@ function updateUser(request, response) {
 	      if (error) {
 	        response.send('Could not update user b/c:' + error);
 	      }
-	      response.redirect('/users');
+	      response.redirect('/restaurants');
 	    });
 	  });
 }
