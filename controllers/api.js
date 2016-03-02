@@ -44,8 +44,8 @@ function show(req, res) {
 }
 
 function update(req, res) {
-	var zomato_id = req.params.zomato_id;
-	Restaurant.findOne({zomato_id: zomato_id}, function(error, restaurant) {
+	var id = req.params.zomato_id;
+	Restaurant.findOne({zomato_id: id}, function(error, restaurant) {
 		if(error) res.json({message: 'Could not find restaurant'});
 
 		if(req.body.overall_rating) restaurant.overall_rating = req.body.overall_rating;

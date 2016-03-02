@@ -15,17 +15,24 @@ function authenticatedUser(req, res, next) {
   res.redirect('/');
 }
 
+
+//GET ALL
 router.route('/')
 	.get(usersController.getIndex);
 
-//show
+//GET show
 router.route('/:id')
 	.get(authenticatedUser, usersController.getUser);
 
+//DELETE destroy
 router.delete('/:id', usersController.destroyUser);
 
+
+//PUT edit
 router.get('/:id/edit', usersController.editUser);
 
+
+//PATCH 
 router.put('/:id', usersController.updateUser);
 
 
