@@ -45,3 +45,7 @@ ul {
 	height: 100%; 
 	width: 100%;
 }
+
+.restaurantTitle {
+    font-family: 'Pacifico', cursive;
+}

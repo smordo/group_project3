@@ -36,61 +36,72 @@
         });
 
         //Infowindow content
-        var content = '<h3><%= results.restaurants[i].restaurant.name %></h3>' + '<p><%= results.restaurants[i].restaurant.location.address %></p>' + 
+        var content = 
+          '<div class="row">' +
+            '<div class="col-md-1">' + '</div>' +
+            '<div class="col-md-10">' +
 
-          '<h4>Please Review!</h4>' +
-          '<div class="form-group col-md-6-offset-3">' +
-            '<form method="POST" action="/restaurants">' + 
+            '<h3 class="restaurantTitle"><%= results.restaurants[i].restaurant.name %></h3>' + '<p><%= results.restaurants[i].restaurant.location.address %></p>' + 
 
-              '<div class="form-group col-md-10">' + 
-                '<h5>Overall Rating</h5>' + 
-                  '<label class="radio-inline"><input type="radio" name="overall_rating" value="1">1</label>' +
-                  '<label class="radio-inline"><input type="radio" name="overall_rating" value="2">2</label>' +
-                  '<label class="radio-inline"><input type="radio" name="overall_rating" value="3">3</label>' +
-                  '<label class="radio-inline"><input type="radio" name="overall_rating" value="4">4</label>' +                   
-                  '<label class="radio-inline"><input type="radio" name="overall_rating" value="5">5</label>' +
-              '</div>' +
+            '<h4>Please Review!</h4>' +
+              '<br>' +
+              '<div class="form-group">' +
+                '<form method="POST" action="/restaurants">' + 
 
-              '<div class="form-group col-md-10">' + 
-                '<h5>Greasy Factor</h5>' + 
-                  '<label class="radio-inline"><input type="radio" name="greasy_rating" value="1">1</label>' +
-                  '<label class="radio-inline"><input type="radio" name="greasy_rating" value="2">2</label>' +
-                  '<label class="radio-inline"><input type="radio" name="greasy_rating" value="3">3</label>' +
-                  '<label class="radio-inline"><input type="radio" name="greasy_rating" value="4">4</label>' +                   
-                  '<label class="radio-inline"><input type="radio" name="greasy_rating" value="5">5</label>' +
-              '</div>' +
+                  '<div class="form-group">' + 
+                    '<h5>Overall Rating</h5>' + 
+                      '<label class="radio-inline"><input type="radio" name="overall_rating" value="1">1</label>' +
+                      '<label class="radio-inline"><input type="radio" name="overall_rating" value="2">2</label>' +
+                      '<label class="radio-inline"><input type="radio" name="overall_rating" value="3">3</label>' +
+                      '<label class="radio-inline"><input type="radio" name="overall_rating" value="4">4</label>' +                   
+                      '<label class="radio-inline"><input type="radio" name="overall_rating" value="5">5</label>' +
+                  '</div>' +
 
-              '<div class="form-group col-md-10">' +
-                '<h5>Tex Mex Factor</h5>' + 
-                  '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="1">1</label>' +
-                  '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="2">2</label>' +
-                  '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="3">3</label>' +
-                  '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="4">4</label>' +                 
-                  '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="5">5</label>' +
-              '</div>' +
+                  '<div class="form-group">' + 
+                    '<h5>Greasy Factor</h5>' + 
+                      '<label class="radio-inline"><input type="radio" name="greasy_rating" value="1">1</label>' +
+                      '<label class="radio-inline"><input type="radio" name="greasy_rating" value="2">2</label>' +
+                      '<label class="radio-inline"><input type="radio" name="greasy_rating" value="3">3</label>' +
+                      '<label class="radio-inline"><input type="radio" name="greasy_rating" value="4">4</label>' +                   
+                      '<label class="radio-inline"><input type="radio" name="greasy_rating" value="5">5</label>' +
+                  '</div>' +
 
-              '<div class="form-group col-md-10">' +
-              '<h5>Artisanal Factor</h5>' + 
-                '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="1">1</label>' +
-                '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="2">2</label>' +
-                '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="3">3</label>' +
-                '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="4">4</label>' +                
-                '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="5">5</label>' +
-              '</div>' +
-              '<div class="form-group col-md-10">' +
-                '<input name="review"  class="form-control" placeholder="What did you think?..."/>' +
-              '</div>' +
+                  '<div class="form-group">' +
+                    '<h5>Tex Mex Factor</h5>' + 
+                      '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="1">1</label>' +
+                      '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="2">2</label>' +
+                      '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="3">3</label>' +
+                      '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="4">4</label>' +                 
+                      '<label class="radio-inline"><input type="radio" name="tex_mex_rating" value="5">5</label>' +
+                  '</div>' +
 
-              '<input type="hidden" name="zomato_id" value="<%= results.restaurants[i].restaurant.R.res_id %>">' +
-              '<input type="hidden" name="name" value="<%= results.restaurants[i].restaurant.name %>">' +
-              '<div class="form-group col-md-12">' +
-                  '<input class="btn btn-primary col-md-10" type="submit" value="Submit">' +
+                  '<div class="form-group">' +
+                  '<h5>Artisanal Factor</h5>' + 
+                    '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="1">1</label>' +
+                    '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="2">2</label>' +
+                    '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="3">3</label>' +
+                    '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="4">4</label>' +                
+                    '<label class="radio-inline"><input type="radio" name="artisanal_rating" value="5">5</label>' +
+                  '</div>' +
+                  '<div class="form-group">' +
+                    '<textarea name="review" class="form-control" placeholder="What did you think?..."></textarea>' +
+                  '</div>' +
+
+                  '<input type="hidden" name="zomato_id" value="<%= results.restaurants[i].restaurant.R.res_id %>">' +
+                  '<input type="hidden" name="name" value="<%= results.restaurants[i].restaurant.name %>">' +
+                  '<div class="form-group">' +
+                      '<input class="btn btn-primary btn-block" type="submit" value="Submit">' +
+                  '</div>' +
+                '</form>' +
               '</div>' +
-            '</form>' +
+              '<div class="col-md-1">' + '</div>' +
+            '<div>' +
           '</div>'
 
         //Creates maps infowindows for each marker and sets content within
-        var infowindow = new google.maps.InfoWindow()
+        var infowindow = new google.maps.InfoWindow({
+          width: 500
+        })
 
         google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
           return function() {
