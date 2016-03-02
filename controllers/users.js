@@ -1,6 +1,8 @@
 var User = require('../models/user.js');
 
 
+// GET INDEX
+
 function getIndex(req, res) {
 	User.find(function(err, users) {
 		if (err) console.log(err)

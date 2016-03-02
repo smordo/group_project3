@@ -10,14 +10,18 @@ function authenticatedUser(req, res, next){
 	res.redirect('/');
 }
 
+//GET & POST signup
 router.route('/signup')
 	.get(passportController.getSignup)
 	.post(passportController.postSignup)
 
+
+//GET & POST login
 router.route('/login')
 	.get(passportController.getLogin)
 	.post(passportController.postLogin)
 
+//GET logout
 router.route('/logout')
 	.get(passportController.getLogout)
 

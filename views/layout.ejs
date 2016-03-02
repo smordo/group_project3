@@ -12,11 +12,14 @@
   <body class="container-fluid">
   <ul class="nav nav-pills">
   	<li role="presentation" class="active"><a href="/restaurants">Home</a></li>
+
+    <!-- If someone is logged in, put a custom welcome message, and show logout button & view profile button -->
   	<% if (user) { %>
               <li><a href="#">Welcome <%=user.local.email%>!</a></li>
               <li><a href="/passport/logout">Logout</a></li<a>
               <li><a href="/users/<%= user._id %>"> View Your Profile</a></li>
 
+            <!--   if no one is logged in, show the login and signup button -->
           <% } else { %>
               <li><a href="/passport/login">Login</a></li>
               <li><a href="/passport/signup">Signup</a></li>

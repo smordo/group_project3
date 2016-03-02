@@ -3,10 +3,12 @@ var User            = require('../models/user');
 
 module.exports = function(passport) {
 
+//Serialize function determine what data from the user object should be stored in the session. only user id is serialized to the session. When subsequent requests are received, this ID is used to find the user, which will be restored to req.user.
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
 
+//deserialize function you provide in first argument of deserialize function that same key of user object that was given to done function in serialize call
   passport.deserializeUser(function(id, callback) {
     User.findById(id, function(err, user) {
         callback(err, user);
